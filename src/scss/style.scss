@@ -1,45 +1,422 @@
-//----------------------------------*\
-// SCSS MIXINS
-//----------------------------------*/
+@import "../components/pure/sass/pure";
+@import "../components/pure-extras/sass/pure-extras";
+@import "../components/pure-typography/sass/pure-typography";
+@import "../components/font-awesome/scss/font-awesome";
+@import url(http://fonts.googleapis.com/css?family=Josefin+Slab:100italic|Open+Sans:400,300,600);
 
-@import 'mixins/_position.scss';
 
-//----------------------------------*\
-// CONFIG MODULES
-//----------------------------------*/
 
-// Config modules
-@import 'modules/_vars.scss';
-@import 'modules/_clearfix.scss';
-@import 'modules/_defaults.scss';
+$black: #222;
+$slate: rgb(133, 133, 133);
+$charcoal: #ddd;
+$lead: #aaa;
+$silver: #ccc;
+$white: #f7f7f7;
+$drk_blue: #1d2f49;
+$med_blue: #2F6D8C;
+$lgt_blue: #71acda;
+$orange: #ff6e12;
+$pale_yellow: #fefff0;
 
-//----------------------------------*\
-// PARTIALS
-//----------------------------------*/
+@mixin serif {
+  font-family: 'Josefin Slab', serif;
+  font-weight: 100;
+}
+$sans: 'Open Sans', sans-serif;
 
-@import 'partials/_header.scss';
-@import 'partials/_nav.scss';
-@import 'partials/_sidebar.scss';
-@import 'partials/_main.scss';
-@import 'partials/_footer.scss';
+body, html {
+	height: 100%;
+  font-family: $sans;
+}
 
-//----------------------------------*\
-// OBJECTS & MODULES
-//----------------------------------*/
+.test {
+  border: 1px solid #abc;
+}
 
-@import 'modules/_buttons.scss';
-@import 'modules/_inputs.scss';
-@import 'modules/_lists.scss';
-@import 'modules/_typography.scss';
-@import 'modules/_misc.scss';
-@import 'modules/_app.scss';
+@mixin outline {
+  outline: 1px solid #c00;
+}
 
-// Enhancement modules
-@import 'modules/_breakpoints.scss';
-@import 'modules/_print.scss';
+@mixin border-top($color) {
+  border-top: 1px solid $color; 
+}
 
-//----------------------------------*\
-// VENDOR
-//----------------------------------*/
+@mixin border-bottom($color) {
+  border-bottom: 1px solid $color; 
+}
 
-@import 'vendor/_external.scss';
+.clearfix {
+  clear: both;
+}
+
+.push-left {
+  float: left;
+  margin-left: 10px;
+}
+
+.push-right {
+  float: left;
+  margin-right: 10px;
+}
+
+
+
+.logo {
+  height: 20px;
+  margin-left: -5px;
+}
+
+
+.container {
+    width: 960px;
+    margin: 0 auto;
+}
+
+/* --------------------------
+ * Main Navigation Bars
+ * --------------------------
+*/
+
+.pure-menu.pure-menu-open.pure-menu-horizontal.top-nav {
+    background: $med_blue;
+    a {
+      color: $white;
+    }
+    a:hover {
+      background: none;
+      color: $drk_blue;
+    }
+    i.icon-search {
+      margin-left: -20px;
+      color: $silver;
+    }
+}
+
+/* --------------------------
+ * Main Sub-nav
+ * --------------------------
+*/
+
+.pure-menu.pure-menu-open.pure-menu-horizontal.header {
+  @include border-bottom($silver);
+  width: 98%;
+  margin: 10px auto 20px auto;
+  ul li {
+      font-size: smaller;
+      a:hover {
+        background: none;
+        color: $orange;
+      }
+    }
+  ul li.active {
+    font-weight: 600;
+    a:hover {
+      color: $slate;
+      font-weight: 600;
+    }
+  }
+}
+
+/* --------------------------
+ * Content Nav
+ * --------------------------
+*/
+
+.gallery-nav {
+    width: 98%;
+    margin: 0 auto 20px auto;
+   a.pure-button {
+      background: $med_blue;
+      color: $white;
+      line-height: 18px;
+      width: 40px;
+      padding: 5px 20px;
+    }
+
+    .pure-button:hover {
+      background: $drk_blue;
+    }
+
+
+  .pull-left[class^="icon-"] {
+      margin-left: -10px;
+      margin-right: -5px;
+      float: left;
+    }
+
+  .pull-right[class^="icon-"] {
+      margin-left: -5px;
+      margin-right: -15px;
+      float: right;
+    }
+
+    .label-left {
+      float: left;
+      margin-left: 10px;
+    }
+
+    .label-right {
+      float: left;
+      margin-left: -10px;
+    }
+}
+
+/* --------------------------
+ * Main Content
+ * --------------------------
+*/
+
+.content {
+  min-height: 950px;
+}
+
+
+/* --------------------------
+ * Gallery & Thumbs
+ * --------------------------
+*/
+
+.caption {
+  .post-meta  {
+    display: inline-block;
+    padding: 0;
+    margin: 0;
+    width: 100%;
+    li {
+      float: left;
+      @include serif;
+      font-size: smaller;
+      color: $orange;
+      .meta-count {
+        float: left;
+      }
+      i {
+        color: $orange;
+        float: left;
+      }
+      a {
+        color: $orange;
+        text-decoration: none;
+        :hover {
+          color: $lgt_blue;
+        }
+      }
+      .meta-count {
+        float: left;
+        padding-left: 5px;
+      }
+    }
+  }
+  .caption-head {
+    a {
+      color: $lgt_blue;
+      text-decoration: none;
+      font-weight: 200;
+    }
+    a:hover {
+      color: $drk_blue;
+    }
+    margin-top: -10px;
+    padding: 5px;
+    text-align: left;
+    font-family: $sans;
+    min-height: 50px;
+  }
+  .chef-tag {
+    margin: -20px auto 0 auto;
+    width: 95%;
+    @include border-top($silver);
+
+    .pure-thumbnails.pure-g {    
+      text-align: left;
+      margin-left: -8px;
+    }
+    .chef-info {
+      text-align: left;
+      padding: 0;
+      margin-left: -10px;
+      .chef-name {
+        font-weight: lighter;
+        font-size: 1.2em;
+        width: 100%;
+        float: left;
+        a {
+          color: $orange;
+          text-decoration: none;
+        }
+      }
+      .chef-status {
+        width: 80%;
+        float: left;
+        margin-top: 3px;
+        @include serif;
+        font-size: .7em;
+        color: $slate;
+      }
+    }
+    .chef-contact {
+      float: right;
+      margin: -40px -5px 0 0;
+      width: 40px;
+      font-size: 1em;
+      a {
+        text-decoration: none;
+        color: $slate;
+        margin: 5px 0 0 5px;
+        :hover {
+          color: $lgt_blue;
+        }
+      }
+    }
+  }
+}
+
+
+.caption.pure-thumb-bordered {
+  border-top: none;
+}
+
+/* --------------------------
+ * Sub-content
+ * --------------------------
+*/
+
+.sub-content {
+  font-size: smaller;
+  color: $slate;
+  width: 98%;
+  margin: 0 auto;
+  @include border-top($silver);
+  .sub-content-logo {
+    width: 75px;
+    float: left;
+    clear: left;
+    margin-top: 10px;
+  }
+  .intro {
+    float: left;
+  }
+}
+
+
+/* --------------------------
+ * Details page
+ * --------------------------
+*/
+.pure-thumbnails.pure-g-r li.pure-u-2-3 {
+    font-weight: lighter;
+    text-align: left;
+}
+.pure-thumbnails.pure-g.details-page {
+
+  .chef-tag {
+    text-align: left;
+    margin-top: -8px;
+
+    .chef-info {
+      text-align: left;
+      margin: 0;
+      padding: 0;
+      width: 70%;
+      float: left;
+      .chef-name {
+        font-weight: lighter;
+        font-size: 1.2em;
+        width: 100%;
+        float: left;
+        a {
+          color: $orange;
+          text-decoration: none;
+        }
+      }
+      .chef-status {
+        float: left;
+        @include serif;
+        width: 100%;
+        font-size: .7em;
+        color: $slate;
+      }
+    }
+
+    .chef-contact {
+      float: left;
+      margin: 0;
+      font-size: 1em;
+      a {
+        text-decoration: none;
+        color: $slate;
+        margin: 5px 0 0 5px;
+        :hover {
+          color: $lgt_blue;
+        }
+      }
+    }
+  }
+}
+
+.detail-thumbs {
+  @include border-top($silver);
+  @include border-bottom($silver);
+  margin: 20px 0 0 -10px;
+  padding: 20px 0 0 0;
+  color: $lgt_blue;
+  li {
+    margin-right: 70px;
+  }
+  li:last-child {
+    margin-right: 0;
+  }
+}
+
+.details-meta {
+  float: left;
+  margin-left: 0;
+  padding-left: 0;
+  li {
+    width: 100%;
+    text-align: left;
+    @include border-bottom($silver);
+    color: $slate;
+    @include serif;
+    i {
+      float: left;
+    }
+    .meta-count {
+      float: left;
+      margin-left: 5px;
+    }
+    ul {
+      margin-bottom: 0;
+    }
+    ul li {
+      border-bottom: none;
+      line-height: 10px;
+    }
+    a {
+      text-decoration: none;
+      color: $slate;
+    }
+    a:hover {
+        color: $orange;
+    }
+  }
+}
+
+/* --------------------------
+ * Footer
+ * --------------------------
+*/
+
+.pure-menu.pure-menu-open.pure-menu-horizontal.footer {
+    background: $silver;
+    font-weight: lighter;
+    float: left;
+    margin: 20px 0 0 0;
+    padding: 0;
+    height: 100px;
+  }
+
+  .pure-menu.pure-menu-open.pure-menu-horizontal.footer p {
+    @include serif;
+    color: $lead;
+  }

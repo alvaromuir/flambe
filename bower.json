@@ -4,6 +4,14 @@
   "dependencies": {
     "modernizr": "~2.6.2",
     "jquery": "~1.10.2",
-    "normalize-css": "~2.1.3"
+    "normalize-css": "~2.1.3",
+    "lodash": "~2.2.1",
+    "moment": "~2.3.1",
+    "socket.io-client": "~0.9.16",
+    "pure": "~0.3.0",
+    "requirejs": "~2.1.8",
+    "pure-extras": "*",
+    "font-awesome": "~3.2.1",
+    "pure-typography": "*"
   }
 }
