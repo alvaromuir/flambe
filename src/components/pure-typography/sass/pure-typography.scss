@@ -1,0 +1,196 @@
+/*
+
+CSS Typography
+Simple CSS for Typography
+Author: Tilo Mitra
+
+*/
+
+.pure-splash {
+  padding: 3em 1.6em;
+}
+
+.pure-splash-button {
+  font-size: 120%;
+}
+
+.pure-splash-head {
+  font-size: 300%;
+  margin: 0.3em 0 0;
+  line-height: 1.2em;
+  font-weight: bold;
+}
+
+.pure-splash-subhead {
+  color: #999;
+  font-weight: 300;
+  line-height: 1.4em;
+  margin: 0.5em 0;
+}
+
+.pure-splash-dark {
+  background: #222222;
+  color: #ffffff;
+  .pure-splash-subhead {
+    color: #888888;
+  }
+}
+
+.pure-type {
+  p {
+    margin-top: 0.5em;
+    line-height: 1.4em;
+  }
+  .muted {
+    opacity: 0.48;
+  }
+  .subtitle {
+    color: #999;
+  }
+  .title {
+    margin-bottom: 0;
+  }
+  .subtitle {
+    margin-top: 0;
+    font-weight: normal;
+  }
+  .subhead {
+    color: #999;
+    text-transform: uppercase;
+    border-bottom: 2px solid #eee;
+    display: inline-block;
+  }
+  blockquote {
+    font-family: "Georgia", serif;
+    color: #666;
+    font-style: italic;
+    line-height: 1.8em;
+    border-left: 5px solid #ddd;
+    padding-left: 1.5em;
+    cite {
+      font-size: 80%;
+      display: block;
+      font-family: sans-serif;
+      font-style: normal;
+      &:before {
+        content: '';
+        display: inline-block;
+        width: 1em;
+        height: 1px;
+        background: #ccc;
+        vertical-align: middle;
+        margin-right: 0.3em;
+      }
+    }
+  }
+  code {
+    font-family: Consolas, 'Liberation Mono', Courier, monospace;
+    background: #f3f3f3;
+    font-size: 0.85em;
+    padding: 0.3em 0.5em;
+  }
+  pre {
+    font-family: Consolas, 'Liberation Mono', Courier, monospace;
+    background: #f3f3f3;
+    font-size: 0.85em;
+    padding: 0.3em 0.5em;
+    padding: 1em;
+  }
+  code {
+    border: 1px solid rgba(0, 0, 0, 0.1);
+    border-radius: 3px;
+    margin: 0 0.2em;
+    white-space: nowrap;
+  }
+  pre {
+    border: 1px solid #ddd;
+    border-radius: 0;
+    white-space: pre-line;
+    code {
+      border: none;
+      white-space: pre-line;
+    }
+  }
+  .pure-ribbon {
+    padding: 0.7em;
+    background: #eee;
+    border-radius: 0;
+  }
+  .pure-ribbon-success {
+    background: #daf7de;
+    color: #0f4416;
+    a {
+      color: #25ad38;
+    }
+  }
+  .pure-ribbon-error {
+    background: #ffe7e7;
+    color: #670000;
+    a {
+      color: #ff1b1b;
+    }
+  }
+  .pure-ribbon-warn {
+    background: #fffbe4;
+    color: #645600;
+    a {
+      color: #b19700;
+    }
+  }
+  dl {
+    dt {
+      font-weight: bold;
+      margin-top: 0.5em;
+    }
+    dd {
+      margin: 0;
+      line-height: 1.6em;
+    }
+  }
+  .list {
+    margin: 0.5em 0;
+    line-height: 1.6em;
+  }
+  .plain {
+    list-style: none;
+  }
+  .text-left {
+    text-align: left;
+  }
+  .text-center {
+    text-align: center;
+  }
+  .text-right {
+    text-align: right;
+  }
+}
+
+@media (max-width: 480px) {
+  .pure-splash {
+    padding: 1.5em 0.8em;
+    text-align: center;
+  }
+  .pure-splash-head {
+    font-size: 200%;
+  }
+  .pure-splash-subhead {
+    font-size: 130%;
+  }
+  .pure-splash-button {
+    font-size: 100%;
+  }
+  .pure-type {
+    dl {
+      dd {
+        margin-left: 0;
+      }
+      dt {
+        margin-top: 0.5em;
+      }
+    }
+    blockquote {
+      margin: 0.5em 0;
+      line-height: 1.6em;
+    }
+  }
+}

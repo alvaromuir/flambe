@@ -244,6 +244,9 @@ body, html {
           color: $orange;
           text-decoration: none;
         }
+        a:hover {
+          color: $slate;
+        }
       }
       .chef-status {
         width: 80%;
@@ -270,7 +273,6 @@ body, html {
     }
   }
 }
-
 
 .caption.pure-thumb-bordered {
   border-top: none;
@@ -308,6 +310,12 @@ body, html {
     text-align: left;
 }
 .pure-thumbnails.pure-g.details-page {
+  .post-date {
+    color: $lgt_blue;
+    @include serif;
+    font-size: smaller;
+    margin: -5px 0 5px 0;
+  }
 
   .chef-tag {
     text-align: left;
@@ -317,35 +325,38 @@ body, html {
       text-align: left;
       margin: 0;
       padding: 0;
-      width: 70%;
+      width: 100%;
       float: left;
       .chef-name {
         font-weight: lighter;
-        font-size: 1.2em;
+        font-size: 1.8em;
         width: 100%;
         float: left;
         a {
           color: $orange;
           text-decoration: none;
         }
+        a:hover {
+            color: $drk_blue;
+          }
       }
       .chef-status {
         float: left;
         @include serif;
         width: 100%;
-        font-size: .7em;
+        font-size: 1em;
         color: $slate;
       }
     }
 
     .chef-contact {
       float: left;
-      margin: 0;
+      margin: 5px 0 0 0;
       font-size: 1em;
       a {
         text-decoration: none;
         color: $slate;
-        margin: 5px 0 0 5px;
+        margin: 5px 15px 0 0;
         :hover {
           color: $lgt_blue;
         }
@@ -403,6 +414,44 @@ body, html {
 }
 
 /* --------------------------
+ * Profile
+ * --------------------------
+*/
+
+.profile-thumbs .caption.pure-thumb-bordered {
+  font-size: smaller;
+  .post-date {
+    @include serif;
+    color: $silver;
+    font-size: smaller;
+    text-align: left;
+    margin: 0 0 5px 5px;;
+  }
+  .caption-head {
+    margin-bottom: 0;
+  }
+}
+
+.user-gallery {
+  margin-top: -10px;
+}
+.chef-tag {
+  .pure-u-1 {
+    h3 {
+      font-weight: 200;
+      color: $med_blue;
+      font-size: 1.5em;
+      @include border-bottom($silver);
+    }
+    p {
+      text-align: left;
+      font-weight: lighter;
+      color: $slate;
+    }
+  }
+}
+
+/* --------------------------
  * Footer
  * --------------------------
 */
@@ -411,7 +460,7 @@ body, html {
     background: $silver;
     font-weight: lighter;
     float: left;
-    margin: 20px 0 0 0;
+    margin-top: 100px;
     padding: 0;
     height: 100px;
   }

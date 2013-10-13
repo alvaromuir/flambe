@@ -2,7 +2,7 @@
 html.no-js
   head
     meta(charset='utf-8')
-    title flambé.
+    title B. Knowles | flambé.
     meta(http-equiv='X-UA-Compatible', content='IE=edge')
     meta(name='description', content='')
     meta(name='viewport', content='width=device-width,initial-scale=1')
@@ -52,70 +52,294 @@ html.no-js
       //- end main-subnav
 
       //- main content
-      .content
-        .pure-g-r
-          ul.pure-thumbnails.pure-g-r
-            li.pure-u-2-3
-              a.pure-thumb.pure-thumb-bordered
-                img(src="/assets/img/dev/sushi.jpg")
-              p Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nunc mauris nibh, cursus sed ante a, tempus egestas odio. Donec adipiscing et neque vulputate aliquet. In lectus magna, ultrices id scelerisque id, fringilla in tortor. Proin sed odio tempus, ornare lorem vitae, fermentum orci. Sed non iaculis elit, quis vulputate ante. Mauris malesuada nulla fermentum odio porttitor, a adipiscing metus dignissim. Donec sit amet tempus leo, ac suscipit nisl. Interdum et malesuada fames ac ante ipsum primis in faucibus. Ut viverra eros nec arcu malesuada adipiscing. Integer mi purus, gravida ut pellentesque sit amet, pulvinar eget arcu. Suspendisse euismod leo enim, sit amet lacinia velit congue sed. Cras ornare suscipit facilisis.
-              ul.detail-thumbs
-                li.pure-u-1-4
-                  a.pure-thumb.pure-thumb-bordered
-                    img(src="/assets/img/dev/sushi.jpg")
-                  p Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nunc mauris nibh, cursus sed ante.
-                li.pure-u-1-4
-                  a.pure-thumb.pure-thumb-bordered
-                    img(src="/assets/img/dev/sushi.jpg")
-                  p Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nunc mauris nibh, cursus sed ante
-                li.pure-u-1-4
-                  a.pure-thumb.pure-thumb-bordered
-                    img(src="/assets/img/dev/sushi.jpg")
-                  p Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nunc mauris nibh, cursus sed ante
+      .content.profile-thumbs
+        ul.pure-thumbnails.pure-g-r
+          //- gallery
+          li.pure-u-2-3.user-gallery
+            ul.pure-thumbnails.pure-g-r
+              li.pure-u-1-3
+                a.pure-thumb.pure-thumb-bordered(href="/details.html")
+                  img.hero(src="/assets/img/dev/sushi.jpg", alt="B Knwoles' Pan-seared Sushi from B. Knowles")
+                .caption.pure-thumb-bordered
+                  .post-meta
+                    ul.post-meta
+                      li.pure-u-1-3
+                        i.icon-eye-open
+                        span.meta-count 12,111
+                      li.pure-u-1-3
+                        a(href="#")
+                          i.icon-heart 
+                          span.meta-count 1,213
+                      li.pure-u-1-3
+                        a(href="#")
+                          i.icon-comments 
+                          span.meta-count 28
+                  .post-date Oct 14, 2013
+                  h3.caption-head
+                    a(href="#") Pan-seared Chilean Sea Bass Sushi
+                  
+              li.pure-u-1-3
+                a.pure-thumb.pure-thumb-bordered.gallery
+                  img.hero(src="/assets/img/dev/sushi_b.jpg", alt="B. Knwoles' Dragon Sashimi")
+                .caption.pure-thumb-bordered
+                  .post-meta
+                    ul.post-meta
+                      li.pure-u-1-3
+                        i.icon-eye-open
+                        span.meta-count 11,102
+                      li.pure-u-1-3
+                        a(href="#")
+                          i.icon-heart 
+                          span.meta-count 1,157
+                      li.pure-u-1-3
+                        a(href="#")
+                          i.icon-comments 
+                          span.meta-count 44
+                  .post-date Oct 13, 2013
+                  h3.caption-head 
+                    a(href="#") Dragon Sashimi
 
-            li.pure-u-1-3
-              ul.pure-thumbnails.pure-g.details-page
-                .chef-tag
-                  li.pure-u-1-3
-                    a.pure-thumb.pure-thumb-rounded(href="#")
-                      img(src="/assets/img/avatars/beyonce.jpg")
-                  li.pure-u-1-2
-                    .chef-info
-                      span.chef-name 
-                        a(href="#") B. Knowles
-                      span.chef-status Exec. Chef, Destiny Sushi
-                    .chef-contact
-                      a(href="#")
-                        i.icon-twitter
-                      a(href="#")
-                        i.icon-linkedin
-                      a(href="#")
-                        i.icon-globe
-                      a(href="#")
-                        i.icon-food
-              ul.details-meta
-                li
-                  i.icon-eye-open 
-                  .meta-count views 12,111
-                li
-                  i.icon-heart
-                  .meta-count loves 1,213
-                li
-                  i.icon-comments
-                  .meta-count comments 26
-                li
-                  i.icon-folder-open
-                  .meta-count category
-                  ul
-                    li 
-                      a(href="#") Fish
-                    li 
-                      a(href="#") Raw Foods
-                li
-                  i.icon-share
-                  .meta-count
-                    a(href="#") share this
-      //- end main content
+              li.pure-u-1-3
+                a.pure-thumb.pure-thumb-bordered.gallery
+                  img.hero(src="/assets/img/dev/sushi_c.jpg", alt="B. Knwoles' California (Roll) Dreamin'")
+                .caption.pure-thumb-bordered
+                  .post-meta
+                    ul.post-meta
+                      li.pure-u-1-3
+                        i.icon-eye-open
+                        span.meta-count 10,903
+                      li.pure-u-1-3
+                        a(href="#")
+                          i.icon-heart 
+                          span.meta-count 1,075
+                      li.pure-u-1-3
+                        a(href="#")
+                          i.icon-comments 
+                          span.meta-count 191
+                  .post-date Oct 12, 2013
+                  h3.caption-head 
+                    a(href="#") California (Roll) Dreamin'
+
+            ul.pure-thumbnails.pure-g-r
+              li.pure-u-1-3
+                a.pure-thumb.pure-thumb-bordered.gallery
+                  img.hero(src="/assets/img/dev/sushi_d.jpg", alt="B. Knwoles' The Amazing Spider Roll")
+                .caption.pure-thumb-bordered
+                  .post-meta
+                    ul.post-meta
+                      li.pure-u-1-3
+                        i.icon-eye-open
+                        span.meta-count 8,7654
+                      li.pure-u-1-3
+                        a(href="#")
+                          i.icon-heart 
+                          span.meta-count 876
+                      li.pure-u-1-3
+                        a(href="#")
+                          i.icon-comments 
+                          span.meta-count 29
+                  .post-date Oct 11, 2013
+                  h3.caption-head 
+                    a(href="#") The Amazing Spider Roll
+
+              li.pure-u-1-3
+                a.pure-thumb.pure-thumb-bordered.gallery
+                  img.hero(src="/assets/img/dev/sushi_e.jpg", alt="B. Knwoles' Timeless Classic: Spicy Tuna")
+                .caption.pure-thumb-bordered
+                  .post-meta
+                    ul.post-meta
+                      li.pure-u-1-3
+                        i.icon-eye-open
+                        span.meta-count 7,662
+                      li.pure-u-1-3
+                        a(href="#")
+                          i.icon-heart 
+                          span.meta-count 703
+                      li.pure-u-1-3
+                        a(href="#")
+                          i.icon-comments 
+                          span.meta-count 32
+                  .post-date Oct 10, 2013
+                  h3.caption-head 
+                    a(href="#") A Timeless Classic: Spicy Tuna
+
+              li.pure-u-1-3
+                a.pure-thumb.pure-thumb-bordered.gallery
+                  img.hero(src="/assets/img/dev/sushi_f.jpg", alt="B. Knwoles' Ready to Errupt - My First Volcano Roll!")
+                .caption.pure-thumb-bordered
+                  .post-meta
+                    ul.post-meta
+                      li.pure-u-1-3
+                        i.icon-eye-open
+                        span.meta-count 6,323
+                      li.pure-u-1-3
+                        a(href="#")
+                          i.icon-heart 
+                          span.meta-count 612
+                      li.pure-u-1-3
+                        a(href="#")
+                          i.icon-comments 
+                          span.meta-count 61
+                  .post-date Oct 14, 2013
+                  h3.caption-head 
+                    a(href="#") Our World Famous Volcano Roll!
+
+            ul.pure-thumbnails.pure-g-r
+              li.pure-u-1-3
+                a.pure-thumb.pure-thumb-bordered.gallery
+                  img.hero(src="/assets/img/dev/sushi_g.jpg", alt="B. Knwoles' How to Train Your Dragon")
+                .caption.pure-thumb-bordered
+                  .post-meta
+                    ul.post-meta
+                      li.pure-u-1-3
+                        i.icon-eye-open
+                        span.meta-count 4,433
+                      li.pure-u-1-3
+                        a(href="#")
+                          i.icon-heart 
+                          span.meta-count 421
+                      li.pure-u-1-3
+                        a(href="#")
+                          i.icon-comments 
+                          span.meta-count 30
+                  .post-date Oct 09, 2013
+                  h3.caption-head 
+                    a(href="#") How to Train Your Dragon
+
+              li.pure-u-1-3
+                a.pure-thumb.pure-thumb-bordered.gallery
+                  img.hero(src="/assets/img/dev/sushi_h.jpg", alt="B. Knwoles' Spicy Mustard Rainbow Roll")
+                .caption.pure-thumb-bordered
+                  .post-meta
+                    ul.post-meta
+                      li.pure-u-1-3
+                        i.icon-eye-open
+                        span.meta-count 3,544
+                      li.pure-u-1-3
+                        a(href="#")
+                          i.icon-heart 
+                          span.meta-count 356
+                      li.pure-u-1-3
+                        a(href="#")
+                          i.icon-comments 
+                          span.meta-count 13
+                  .post-date Oct 14, 2013
+                  h3.caption-head 
+                    a(href="#") Spicy Mustard Rainbow Roll
+
+              li.pure-u-1-3
+                a.pure-thumb.pure-thumb-bordered.gallery
+                  img.hero(src="/assets/img/dev/sushi_i.jpg", alt="B. Knwoles' Inside-Out Alaska Roll")
+                .caption.pure-thumb-bordered
+                  .post-meta
+                    ul.post-meta
+                      li.pure-u-1-3
+                        i.icon-eye-open
+                        span.meta-count 2,356
+                      li.pure-u-1-3
+                        a(href="#")
+                          i.icon-heart 
+                          span.meta-count 284
+                      li.pure-u-1-3
+                        a(href="#")
+                          i.icon-comments 
+                          span.meta-count 11
+                  .post-date Oct 08, 2013
+                  h3.caption-head 
+                    a(href="#") Inside-Out Alaska Roll
+
+            ul.pure-thumbnails.pure-g-r
+              li.pure-u-1-3
+                a.pure-thumb.pure-thumb-bordered.gallery
+                  img.hero(src="/assets/img/dev/sushi_j.jpg", alt="B. Knwoles' Spicy California Tempura Hand Rolls")
+                .caption.pure-thumb-bordered
+                  .post-meta
+                    ul.post-meta
+                      li.pure-u-1-3
+                        i.icon-eye-open
+                        span.meta-count 4,433
+                      li.pure-u-1-3
+                        a(href="#")
+                          i.icon-heart 
+                          span.meta-count 421
+                      li.pure-u-1-3
+                        a(href="#")
+                          i.icon-comments 
+                          span.meta-count 30
+                  .post-date Oct 07, 2013
+                  h3.caption-head 
+                    a(href="#") Spicy California Tempura Hand Rolls
+
+              li.pure-u-1-3
+                a.pure-thumb.pure-thumb-bordered.gallery
+                  img.hero(src="/assets/img/dev/sushi_k.jpg", alt="B. Knwoles' Something differnt - Roast Beef Roll")
+                .caption.pure-thumb-bordered
+                  .post-meta
+                    ul.post-meta
+                      li.pure-u-1-3
+                        i.icon-eye-open
+                        span.meta-count 3,544
+                      li.pure-u-1-3
+                        a(href="#")
+                          i.icon-heart 
+                          span.meta-count 356
+                      li.pure-u-1-3
+                        a(href="#")
+                          i.icon-comments 
+                          span.meta-count 13
+                  .post-date Oct 06, 2013
+                  h3.caption-head 
+                    a(href="#") Something Differnt - Roast Beef Roll
+
+              li.pure-u-1-3
+                a.pure-thumb.pure-thumb-bordered.gallery
+                  img.hero(src="/assets/img/dev/sushi_l.jpg", alt="B. Knwoles' Crunchy Dragon Roll")
+                .caption.pure-thumb-bordered
+                  .post-meta
+                    ul.post-meta
+                      li.pure-u-1-3
+                        i.icon-eye-open
+                        span.meta-count 2,356
+                      li.pure-u-1-3
+                        a(href="#")
+                          i.icon-heart 
+                          span.meta-count 284
+                      li.pure-u-1-3
+                        a(href="#")
+                          i.icon-comments 
+                          span.meta-count 11
+                  .post-date Oct 05, 2013
+                  h3.caption-head 
+                    a(href="#") Crunchy Dragon Roll
+          //- end gallery
+
+          //- about this chef
+          li.pure-u-1-3
+            ul.pure-thumbnails.pure-g.details-page
+              .chef-tag
+                li.pure-u-1-3
+                  a.pure-thumb.pure-thumb-rounded(href="#")
+                    img(src="/assets/img/avatars/beyonce.jpg")
+                li.pure-u-2-3
+                  .post-date Posted: Oct 04, 2013
+                  .chef-info
+                    span.chef-name 
+                      a(href="#") B. Knowles
+                    span.chef-status Exec. Chef, Destiny Sushi
+                  .chef-contact
+                    a(href="#")
+                      i.icon-twitter
+                    a(href="#")
+                      i.icon-linkedin
+                    a(href="#")
+                      i.icon-globe
+                    a(href="#")
+                      i.icon-food
+                li.pure-u-1
+                  h3 About B. Knowles
+                  p Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nunc mauris nibh, cursus sed ante a, tempus egestas odio. Donec adipiscing et neque vulputate aliquet. In lectus magna, ultrices id scelerisque id, fringilla in tortor. Proin sed odio tempus, ornare lorem vitae, fermentum orci. Sed non iaculis elit, quis vulputate ante. Mauris malesuada nulla fermentum odio porttitor, a adipiscing metus dignissim. Donec sit amet tempus leo, ac suscipit nisl. Interdum et malesuada fames ac ante ipsum primis in faucibus. Ut viverra eros nec arcu malesuada adipiscing. Integer mi purus, gravida ut pellentesque sit amet, pulvinar eget arcu. Suspendisse euismod leo enim, sit amet lacinia velit congue sed. Cras ornare suscipit facilisis.
+          //- end about this chef
+      //- end main-content
 
       //- gallery-nav
       .gallery-nav

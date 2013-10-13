@@ -1,0 +1,52 @@
+/*!
+Pure v0.3.0
+Copyright 2013 Yahoo! Inc. All rights reserved.
+Licensed under the BSD License.
+https://github.com/yui/pure/blob/master/LICENSE.md
+*/
+
+.pure-paginator {
+  letter-spacing: -.31em;
+  *letter-spacing: normal;
+  *word-spacing: -.43em;
+  text-rendering: optimizespeed;
+  list-style: none;
+  margin: 0;
+  padding: 0;
+}
+
+.opera-only :-o-prefocus {
+  word-spacing: -.43em;
+}
+
+.pure-paginator {
+  word-spacing: -.43em;
+  li {
+    display: inline-block;
+    *display: inline;
+    zoom: 1;
+    letter-spacing: normal;
+    word-spacing: normal;
+    vertical-align: top;
+    text-rendering: auto;
+  }
+  .pure-button {
+    border-radius: 0;
+    padding: .8em 1.4em;
+    vertical-align: top;
+    height: 1.1em;
+    &:focus, &:active {
+      outline-style: none;
+    }
+  }
+  .prev, .next {
+    color: #C0C1C3;
+    text-shadow: 0 -1px 0 rgba(0, 0, 0, 0.45);
+  }
+  .prev {
+    border-radius: 2px 0 0 2px;
+  }
+  .next {
+    border-radius: 0 2px 2px 0;
+  }
+}
