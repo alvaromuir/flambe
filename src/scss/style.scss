@@ -90,6 +90,11 @@ body, html {
       margin-left: -20px;
       color: $silver;
     }
+
+    .nav-right {
+      float: right;
+      margin-right: 20px;
+    }
 }
 
 /* --------------------------
@@ -99,7 +104,7 @@ body, html {
 
 .pure-menu.pure-menu-open.pure-menu-horizontal.header {
   @include border-bottom($silver);
-  width: 98%;
+  width: 99%;
   margin: 10px auto 20px auto;
   ul li {
       font-size: smaller;
@@ -123,7 +128,7 @@ body, html {
 */
 
 .gallery-nav {
-    width: 98%;
+    width: 99%;
     margin: 0 auto 20px auto;
    a.pure-button {
       background: $med_blue;
@@ -235,6 +240,8 @@ body, html {
       text-align: left;
       padding: 0;
       margin-left: -10px;
+      width: 100%;
+      clear: both;
       .chef-name {
         font-weight: lighter;
         font-size: 1.2em;
@@ -249,7 +256,6 @@ body, html {
         }
       }
       .chef-status {
-        width: 80%;
         float: left;
         margin-top: 3px;
         @include serif;
@@ -258,17 +264,22 @@ body, html {
       }
     }
     .chef-contact {
-      float: right;
-      margin: -40px -5px 0 0;
-      width: 40px;
-      font-size: 1em;
+      @include border-top($silver);
+      float: left;
+      clear: both;
+      text-align: right;
+      font-size: .8em;
+      width: 100%;
+      position: relative;
+      padding: 5px 5px 0 0;
+      margin-top: 10px;
       a {
         text-decoration: none;
         color: $slate;
-        margin: 5px 0 0 5px;
         :hover {
           color: $lgt_blue;
         }
+        margin-left: 15px;
       }
     }
   }
@@ -286,7 +297,7 @@ body, html {
 .sub-content {
   font-size: smaller;
   color: $slate;
-  width: 98%;
+  width: 99%;
   margin: 0 auto;
   @include border-top($silver);
   .sub-content-logo {
@@ -315,6 +326,7 @@ body, html {
     @include serif;
     font-size: smaller;
     margin: -5px 0 5px 0;
+    text-align: left;
   }
 
   .chef-tag {
@@ -351,12 +363,13 @@ body, html {
 
     .chef-contact {
       float: left;
-      margin: 5px 0 0 0;
+      margin: 5px 0 0 5px;
       font-size: 1em;
       a {
         text-decoration: none;
         color: $slate;
-        margin: 5px 15px 0 0;
+        text-align: right;
+        margin-top: 5px;
         :hover {
           color: $lgt_blue;
         }
@@ -420,22 +433,36 @@ body, html {
 
 .profile-thumbs .caption.pure-thumb-bordered {
   font-size: smaller;
+
+}
+.user-gallery {
+  margin-top: -10px;
+  .pure-u-1-3 {
+    .meta-count {
+      font-size: smaller;
+    }
+  }
   .post-date {
     @include serif;
     color: $silver;
     font-size: smaller;
     text-align: left;
-    margin: 0 0 5px 5px;;
+    float: left;
+    width: 95%;
+    margin: 0 0 0 5px;
   }
-  .caption-head {
+  .caption-head  {
     margin-bottom: 0;
+    width: 95%;
+    overflow-y: hidden;
+    float: left;
+    a {
+      float: left;
+      padding: 0;
+    }
   }
 }
-
-.user-gallery {
-  margin-top: -10px;
-}
-.chef-tag {
+.details-page .chef-tag {
   .pure-u-1 {
     h3 {
       font-weight: 200;
@@ -447,6 +474,25 @@ body, html {
       text-align: left;
       font-weight: lighter;
       color: $slate;
+    }
+  }
+  .chef-contact {
+    @include border-top($silver);
+    float: left;
+    clear: both;
+    text-align: right;
+    font-size: .8em;
+    width: 100%;
+    position: relative;
+    padding: 5px 5px 0 0;
+    margin: 10px 0 0 10px;
+    a {
+      text-decoration: none;
+      color: $slate;
+      :hover {
+        color: $lgt_blue;
+      }
+      margin-left: 15px;
     }
   }
 }

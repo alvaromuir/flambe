@@ -3875,6 +3875,10 @@ body, html {
   margin-left: -20px;
   color: #cccccc;
 }
+.pure-menu.pure-menu-open.pure-menu-horizontal.top-nav .nav-right {
+  float: right;
+  margin-right: 20px;
+}
 
 /* --------------------------
  * Main Sub-nav
@@ -3882,7 +3886,7 @@ body, html {
 */
 .pure-menu.pure-menu-open.pure-menu-horizontal.header {
   border-bottom: 1px solid #cccccc;
-  width: 98%;
+  width: 99%;
   margin: 10px auto 20px auto;
 }
 .pure-menu.pure-menu-open.pure-menu-horizontal.header ul li {
@@ -3905,7 +3909,7 @@ body, html {
  * --------------------------
 */
 .gallery-nav {
-  width: 98%;
+  width: 99%;
   margin: 0 auto 20px auto;
 }
 .gallery-nav a.pure-button {
@@ -4008,6 +4012,8 @@ body, html {
   text-align: left;
   padding: 0;
   margin-left: -10px;
+  width: 100%;
+  clear: both;
 }
 .caption .chef-tag .chef-info .chef-name {
   font-weight: lighter;
@@ -4023,7 +4029,6 @@ body, html {
   color: #858585;
 }
 .caption .chef-tag .chef-info .chef-status {
-  width: 80%;
   float: left;
   margin-top: 3px;
   font-family: 'Josefin Slab', serif;
@@ -4032,15 +4037,20 @@ body, html {
   color: #858585;
 }
 .caption .chef-tag .chef-contact {
-  float: right;
-  margin: -40px -5px 0 0;
-  width: 40px;
-  font-size: 1em;
+  border-top: 1px solid #cccccc;
+  float: left;
+  clear: both;
+  text-align: right;
+  font-size: .8em;
+  width: 100%;
+  position: relative;
+  padding: 5px 5px 0 0;
+  margin-top: 10px;
 }
 .caption .chef-tag .chef-contact a {
   text-decoration: none;
   color: #858585;
-  margin: 5px 0 0 5px;
+  margin-left: 15px;
 }
 .caption .chef-tag .chef-contact a :hover {
   color: #71acda;
@@ -4057,7 +4067,7 @@ body, html {
 .sub-content {
   font-size: smaller;
   color: #858585;
-  width: 98%;
+  width: 99%;
   margin: 0 auto;
   border-top: 1px solid #cccccc;
 }
@@ -4086,6 +4096,7 @@ body, html {
   font-weight: 100;
   font-size: smaller;
   margin: -5px 0 5px 0;
+  text-align: left;
 }
 .pure-thumbnails.pure-g.details-page .chef-tag {
   text-align: left;
@@ -4121,13 +4132,14 @@ body, html {
 }
 .pure-thumbnails.pure-g.details-page .chef-tag .chef-contact {
   float: left;
-  margin: 5px 0 0 0;
+  margin: 5px 0 0 5px;
   font-size: 1em;
 }
 .pure-thumbnails.pure-g.details-page .chef-tag .chef-contact a {
   text-decoration: none;
   color: #858585;
-  margin: 5px 15px 0 0;
+  text-align: right;
+  margin-top: 5px;
 }
 .pure-thumbnails.pure-g.details-page .chef-tag .chef-contact a :hover {
   color: #71acda;
@@ -4189,32 +4201,63 @@ body, html {
 .profile-thumbs .caption.pure-thumb-bordered {
   font-size: smaller;
 }
-.profile-thumbs .caption.pure-thumb-bordered .post-date {
+
+.user-gallery {
+  margin-top: -10px;
+}
+.user-gallery .pure-u-1-3 .meta-count {
+  font-size: smaller;
+}
+.user-gallery .post-date {
   font-family: 'Josefin Slab', serif;
   font-weight: 100;
   color: #cccccc;
   font-size: smaller;
   text-align: left;
-  margin: 0 0 5px 5px;
+  float: left;
+  width: 95%;
+  margin: 0 0 0 5px;
 }
-.profile-thumbs .caption.pure-thumb-bordered .caption-head {
+.user-gallery .caption-head {
   margin-bottom: 0;
+  width: 95%;
+  overflow-y: hidden;
+  float: left;
+}
+.user-gallery .caption-head a {
+  float: left;
+  padding: 0;
 }
 
-.user-gallery {
-  margin-top: -10px;
-}
-
-.chef-tag .pure-u-1 h3 {
+.details-page .chef-tag .pure-u-1 h3 {
   font-weight: 200;
   color: #2f6d8c;
   font-size: 1.5em;
   border-bottom: 1px solid #cccccc;
 }
-.chef-tag .pure-u-1 p {
+.details-page .chef-tag .pure-u-1 p {
   text-align: left;
   font-weight: lighter;
   color: #858585;
+}
+.details-page .chef-tag .chef-contact {
+  border-top: 1px solid #cccccc;
+  float: left;
+  clear: both;
+  text-align: right;
+  font-size: .8em;
+  width: 100%;
+  position: relative;
+  padding: 5px 5px 0 0;
+  margin: 10px 0 0 10px;
+}
+.details-page .chef-tag .chef-contact a {
+  text-decoration: none;
+  color: #858585;
+  margin-left: 15px;
+}
+.details-page .chef-tag .chef-contact a :hover {
+  color: #71acda;
 }
 
 /* --------------------------
