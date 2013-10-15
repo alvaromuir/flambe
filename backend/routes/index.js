@@ -2,7 +2,13 @@
 (function() {
   exports.index = function(req, res) {
     return res.render('index', {
-      title: 'Express'
+      title: 'flambé'
+    });
+  };
+
+  exports.login = function(req, res) {
+    return res.render('login', {
+      title: 'flambé'
     });
   };
 

@@ -5,19 +5,50 @@ Module dependencies.
 
 
 (function() {
-  var app, express, http, path, routes, user;
+  var app, auth, dbConfig, dbSetup, details, everyauth, express, http, path, profile, routes, setup, tools, user;
 
   express = require('express');
-
-  routes = require('./routes');
-
-  user = require('./routes/user');
 
   http = require('http');
 
   path = require('path');
 
+  everyauth = require('everyauth');
+
+  routes = require('./routes');
+
+  details = require('./routes/details');
+
+  profile = require('./routes/profile');
+
+  auth = require('./lib/auth_config');
+
+  dbConfig = require('./lib/db_config');
+
+  setup = require('./lib/setup');
+
+  user = require('./lib/user');
+
+  tools = require('./lib/tools');
+
   app = express();
+
+  dbSetup = {
+    uri: setup.dataBaseURI,
+    name: setup.serverName
+  };
+
+  dbConfig.init(dbSetup);
+
+  auth.init(everyauth, everyauth.Promise);
+
+  user.init(dbConfig.models());
+
+  user.create({
+    email: 'alvaro@alvaromuir.com'
+  }, function(doc) {
+    return console.log(doc);
+  });
 
   app.set('port', process.env.PORT || 3000);
 
@@ -31,6 +62,14 @@ Module dependencies.
 
   app.use(express.bodyParser());
 
+  app.use(express.cookieParser('iz bklyn in da house'));
+
+  app.use(express.session({
+    secret: 'W!th0ut@d0u3t'
+  }));
+
+  app.use(everyauth.middleware(app));
+
   app.use(express.methodOverride());
 
   app.use(app.router);
@@ -40,14 +79,21 @@ Module dependencies.
   if ('development' === app.get('env')) {
     app.use(express.errorHandler());
     app.locals.pretty = true;
+    auth.debug = true;
   }
 
   app.get('/', routes.index);
 
-  app.get('/users', user.list);
+  app.get('/login', routes.login);
+
+  app.get('/details', details.index);
+
+  app.get('/profile', profile.index);
 
   http.createServer(app).listen(app.get('port'), function() {
     return console.log('Express server listening on port ' + app.get('port'));
   });
+
+  require('./lib/sockets').init(http.createServer(app));
 
 }).call(this);
