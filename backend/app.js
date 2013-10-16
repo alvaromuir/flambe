@@ -5,7 +5,7 @@ Module dependencies.
 
 
 (function() {
-  var app, auth, dbConfig, dbSetup, details, everyauth, express, http, path, profile, routes, setup, tools, user;
+  var app, auth, dbConfig, dbSetup, details, everyauth, express, http, path, profile, routes, setup, tools;
 
   express = require('express');
 
@@ -27,8 +27,6 @@ Module dependencies.
 
   setup = require('./lib/setup');
 
-  user = require('./lib/user');
-
   tools = require('./lib/tools');
 
   app = express();
@@ -38,17 +36,7 @@ Module dependencies.
     name: setup.serverName
   };
 
-  dbConfig.init(dbSetup);
-
-  auth.init(everyauth, everyauth.Promise);
-
-  user.init(dbConfig.models());
-
-  user.create({
-    email: 'alvaro@alvaromuir.com'
-  }, function(doc) {
-    return console.log(doc);
-  });
+  auth.init(everyauth);
 
   app.set('port', process.env.PORT || 3000);
 
@@ -57,8 +45,6 @@ Module dependencies.
   app.set('view engine', 'jade');
 
   app.use(express.favicon(path.join(__dirname, 'public/favicon.ico')));
-
-  app.use(express.logger('dev'));
 
   app.use(express.bodyParser());
 
@@ -79,7 +65,6 @@ Module dependencies.
   if ('development' === app.get('env')) {
     app.use(express.errorHandler());
     app.locals.pretty = true;
-    auth.debug = true;
   }
 
   app.get('/', routes.index);

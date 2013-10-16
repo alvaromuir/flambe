@@ -47,7 +47,7 @@ describe "Database setup", ->
       it "should be able to create users", (done) ->
 
         _.forEach usrData, (usr) ->
-          User.create usr, (rslt) ->
+          User.create usr, (err, rslt) ->
             tmpUsrs.push rslt
             # console.log 'user #', count, ' created'
             count += 1
@@ -62,7 +62,7 @@ describe "Database setup", ->
         query[random_key] = usr[random_key]
         queryRslt = ''
 
-        User.read query, (rslt) ->
+        User.read query, (err, rslt) ->
           queryRslt = rslt[0]
           rslt[0][random_key].should.equal usr[random_key]
           done()
@@ -75,14 +75,14 @@ describe "Database setup", ->
       it "should be able to find a user by ID", (done) ->
         random_usr = tmpUsrs[_.random 0, total - 1]
 
-        User.readById random_usr._id, (rslt) ->
+        User.readById random_usr._id, (err, rslt) ->
           rslt.displayName.should.equal random_usr.displayName
           done()
 
       it "should be able to find a single user by criteria", (done) ->
         match = /rocknation.com/i
         query = {email: match}
-        User.readOne query, (rslt) ->
+        User.readOne query, (err, rslt) ->
           match.test(rslt.email).should.equal true
           done()
 
@@ -90,7 +90,7 @@ describe "Database setup", ->
       it "should be able to update records by criteria", (done) ->
         match = /rocknation.com/i
         query = {email: match}
-        User.read query, (rslt) ->
+        User.read query, (err, rslt) ->
           total = rslt.length
           count =  0
           _.forEach rslt, (rcrd) ->
@@ -101,17 +101,17 @@ describe "Database setup", ->
             User.update query, update, (err, num, raw) ->
               done(err) if err
               # console.log 'results :', raw
-              User.readById _id:rcrd._id, (rslt) ->
+              User.readById _id:rcrd._id, (err, rslt) ->
                 rslt.email.should.equal update.email
                 count += 1
                 if count is total
                   done()
 
-      it "should be able to update a record by ID", (done) ->
+      it "should be able to update a record by Id", (done) ->
         random_usr  = tmpUsrs[_.random 0, total - 1]
         updates     = status: 'updated by id test suite on ' + moment().toString()
 
-        User.updateByID random_usr._id, updates, (err, rslt) ->
+        User.updateById random_usr._id, updates, (err, rslt) ->
           rslt.status.should.equal updates.status
           done()
 
@@ -141,20 +141,20 @@ describe "Database setup", ->
         query = {}
         query[random_key] = random_usr[random_key]
 
-        User.read query, (rslt) ->
-          User.delete rslt[0], (err) ->
-            User.readById rslt[0]._id, (err, rslt) ->
-              done(err) if err
-              expect(rslt).to.be.undefined
-              done()
+        User.read query, (err, rslt) ->
+          if rslt[0]
+            User.delete rslt[0], (err) ->
+              User.readById rslt[0]._id, (err, rslt) ->
+                done(err) if err
+                expect(rslt).to.not.exist
+                done()
 
 
       it "should be able to delete a record by ID", (done) ->
         random_usr = _.clone(tmpUsrs[_.random 0, total - 1])._doc
         delete tmpUsrs[random_usr]
 
-        User.deleteByID random_usr._id, {}, (rslt) ->
-          # console.log rslt
+        User.deleteById random_usr._id, {}, (err) ->
           done()
 
       it "should be able to delete a single record by criteria", (done) ->
@@ -167,12 +167,10 @@ describe "Database setup", ->
         random_key = _.keys(random_usr)[_.random 0, _.keys(random_usr).length - 1]
         query = {}
         query[random_key] = random_usr[random_key]
-
         User.deleteOne query, {}, (err, rslt) ->
-          User.readOne query, (err, rslt) ->
-            done(err) if err
-            expect(rslt).to.be.undefined
-            done()
+          if rslt
+            expect(rslt[_.keys query].toString()).to.equal query[_.keys query].toString()
+          done()
 
 
       it "should be able to delete records quickly", (done) ->
@@ -183,6 +181,6 @@ describe "Database setup", ->
           User.deleteQuick query
           count += 1
           if count is total
-            User.count {}, (rslt) ->
+            User.count {}, (err, rslt) ->
               expect(rslt).to.equal 0
               done()

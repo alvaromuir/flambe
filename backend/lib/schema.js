@@ -10,6 +10,7 @@
     User: {
       model: {
         email: String,
+        name: String,
         username: String,
         displayName: String,
         status: String,

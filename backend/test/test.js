@@ -56,7 +56,7 @@
         });
         it("should be able to create users", function(done) {
           return _.forEach(usrData, function(usr) {
-            return User.create(usr, function(rslt) {
+            return User.create(usr, function(err, rslt) {
               tmpUsrs.push(rslt);
               count += 1;
               if (count === total) {
@@ -72,7 +72,7 @@
           query = {};
           query[random_key] = usr[random_key];
           queryRslt = '';
-          User.read(query, function(rslt) {
+          User.read(query, function(err, rslt) {
             queryRslt = rslt[0];
             rslt[0][random_key].should.equal(usr[random_key]);
             return done();
@@ -86,7 +86,7 @@
         });
         it("should be able to find a user by ID", function(done) {
           random_usr = tmpUsrs[_.random(0, total - 1)];
-          return User.readById(random_usr._id, function(rslt) {
+          return User.readById(random_usr._id, function(err, rslt) {
             rslt.displayName.should.equal(random_usr.displayName);
             return done();
           });
@@ -97,7 +97,7 @@
           query = {
             email: match
           };
-          return User.readOne(query, function(rslt) {
+          return User.readOne(query, function(err, rslt) {
             match.test(rslt.email).should.equal(true);
             return done();
           });
@@ -108,7 +108,7 @@
           query = {
             email: match
           };
-          return User.read(query, function(rslt) {
+          return User.read(query, function(err, rslt) {
             total = rslt.length;
             count = 0;
             return _.forEach(rslt, function(rcrd) {
@@ -126,7 +126,7 @@
                 }
                 return User.readById({
                   _id: rcrd._id
-                }, function(rslt) {
+                }, function(err, rslt) {
                   rslt.email.should.equal(update.email);
                   count += 1;
                   if (count === total) {
@@ -137,13 +137,13 @@
             });
           });
         });
-        it("should be able to update a record by ID", function(done) {
+        it("should be able to update a record by Id", function(done) {
           var updates;
           random_usr = tmpUsrs[_.random(0, total - 1)];
           updates = {
             status: 'updated by id test suite on ' + moment().toString()
           };
-          return User.updateByID(random_usr._id, updates, function(err, rslt) {
+          return User.updateById(random_usr._id, updates, function(err, rslt) {
             rslt.status.should.equal(updates.status);
             return done();
           });
@@ -177,22 +177,24 @@
           random_key = _.keys(random_usr)[_.random(0, _.keys(random_usr).length - 1)];
           query = {};
           query[random_key] = random_usr[random_key];
-          return User.read(query, function(rslt) {
-            return User["delete"](rslt[0], function(err) {
-              return User.readById(rslt[0]._id, function(err, rslt) {
-                if (err) {
-                  done(err);
-                }
-                expect(rslt).to.be.undefined;
-                return done();
+          return User.read(query, function(err, rslt) {
+            if (rslt[0]) {
+              return User["delete"](rslt[0], function(err) {
+                return User.readById(rslt[0]._id, function(err, rslt) {
+                  if (err) {
+                    done(err);
+                  }
+                  expect(rslt).to.not.exist;
+                  return done();
+                });
               });
-            });
+            }
           });
         });
         it("should be able to delete a record by ID", function(done) {
           random_usr = _.clone(tmpUsrs[_.random(0, total - 1)])._doc;
           delete tmpUsrs[random_usr];
-          return User.deleteByID(random_usr._id, {}, function(rslt) {
+          return User.deleteById(random_usr._id, {}, function(err) {
             return done();
           });
         });
@@ -207,13 +209,10 @@
           query = {};
           query[random_key] = random_usr[random_key];
           return User.deleteOne(query, {}, function(err, rslt) {
-            return User.readOne(query, function(err, rslt) {
-              if (err) {
-                done(err);
-              }
-              expect(rslt).to.be.undefined;
-              return done();
-            });
+            if (rslt) {
+              expect(rslt[_.keys(query)].toString()).to.equal(query[_.keys(query)].toString());
+            }
+            return done();
           });
         });
         return it("should be able to delete records quickly", function(done) {
@@ -227,7 +226,7 @@
             User.deleteQuick(query);
             count += 1;
             if (count === total) {
-              return User.count({}, function(rslt) {
+              return User.count({}, function(err, rslt) {
                 expect(rslt).to.equal(0);
                 return done();
               });

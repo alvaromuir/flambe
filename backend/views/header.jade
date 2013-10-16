@@ -11,12 +11,23 @@
           a(href="#") chefs
         li
           a(href="#") food groups
-        li
-          a(href="#") join us
 
       ul.nav-right
         li
-          a(href="#") sign in
+          if everyauth.loggedIn
+            li
+              .user-welcome
+                .user-links
+                  a.greeting(href="/profile.html") Welcome, #{greetingName}
+                  a.logout(href="/logout") 
+                    i.icon-remove-sign.pull-left 
+                    span.text logout
+                  .clearfix    
+                a(href="/profile.html")
+                  img(src="#{avatar}", alt="#{displayName}")
+              
+          else
+            a(href="/login") sign in
         li
           form.pure-form
             .input-append

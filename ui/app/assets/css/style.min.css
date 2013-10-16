@@ -4251,6 +4251,11 @@ html {
   font-family: "Open Sans", sans-serif;
 }
 
+body a,
+html a {
+  text-decoration: none;
+}
+
 .test {
   border: 1px solid #abc;
 }
@@ -4277,6 +4282,7 @@ html {
 .container {
   width: 960px;
   margin: 0 auto;
+  min-height: 90%;
 }
 
 /* --------------------------
@@ -4304,7 +4310,58 @@ html {
 
 .pure-menu.pure-menu-open.pure-menu-horizontal.top-nav .nav-right {
   float: right;
-  margin-right: 20px;
+  text-align: right;
+  padding: 0;
+  margin: 3px 10px 0 0;
+}
+
+.pure-menu.pure-menu-open.pure-menu-horizontal.top-nav .nav-right a {
+  padding: 0;
+  float: left;
+}
+
+.pure-menu.pure-menu-open.pure-menu-horizontal.top-nav .nav-right .user-welcome {
+  float: left;
+  font-size: smaller;
+  padding: 0;
+  height: 30px;
+}
+
+.pure-menu.pure-menu-open.pure-menu-horizontal.top-nav .nav-right .user-welcome .user-links {
+  padding: 0;
+  float: left;
+}
+
+.pure-menu.pure-menu-open.pure-menu-horizontal.top-nav .nav-right .user-welcome .user-links .greeting {
+  float: left;
+  text-align: right;
+  line-height: 14px;
+  margin: 0 -5px 5px 0;
+  padding: 0;
+}
+
+.pure-menu.pure-menu-open.pure-menu-horizontal.top-nav .nav-right .user-welcome .user-links a.logout {
+  float: right;
+  clear: left;
+  margin: -5px;
+  padding: 0;
+  line-height: 1em;
+}
+
+.pure-menu.pure-menu-open.pure-menu-horizontal.top-nav .nav-right .user-welcome img {
+  float: left;
+  width: 27px;
+  height: 27px;
+  border-radius: 3px;
+  border: 1px solid #cccccc;
+  padding: 0;
+  margin: 0 -5px -3px 10px;
+}
+
+.pure-menu.pure-menu-open.pure-menu-horizontal.top-nav .nav-right .input-append {
+  padding: 0;
+  margin-top: 1px;
+  float: left;
 }
 
 /* --------------------------
@@ -4381,6 +4438,38 @@ html {
 }
 
 /* --------------------------
+ * Login 
+ * --------------------------
+*/
+
+ul.login-items {
+  list-style: none;
+  width: 100%;
+  float: left;
+}
+
+ul.login-items li {
+  float: left;
+  clear: left;
+  margin-bottom: 10px;
+}
+
+ul.login-items li :hover {
+  color: #ff6e12;
+}
+
+ul.login-items li a {
+  color: #71acda;
+}
+
+ul.login-items li a [class^="icon-"],
+ul.login-items li a [class*=" icon-"] {
+  float: left;
+  width: 15px;
+  margin-right: 5px;
+}
+
+/* --------------------------
  * Main Content
  * --------------------------
 */
@@ -4433,6 +4522,8 @@ html {
 }
 
 .caption .caption-head {
+  height: 50px;
+  min-height: 50px;
   margin-top: -10px;
   padding: 5px;
   text-align: left;

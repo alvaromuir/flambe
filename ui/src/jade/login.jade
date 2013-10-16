@@ -1,0 +1,105 @@
+!!! 5
+html.no-js
+  head
+    meta(charset='utf-8')
+    title Log-in, or sign in. Up to you. | flambé.
+    meta(http-equiv='X-UA-Compatible', content='IE=edge')
+    meta(name='description', content='')
+    meta(name='viewport', content='width=device-width,initial-scale=1')
+    link(href='//www.google-analytics.com', rel='dns-prefetch')
+    link(href='//ajax.googleapis.com', rel='dns-prefetch')
+    link(href='assets/css/style.min.css', rel='stylesheet')
+    script(src='assets/components/modernizr.js')
+  body(style='')
+    //- nav
+    .pure-menu.pure-menu-open.pure-menu-horizontal.top-nav
+      .container
+        .pure-menu.pure-menu-open.pure-menu-horizontal.top-nav
+          a.pure-menu-heading(href="/")
+            img.hero(src="/assets/img/logo.png")
+          ul
+            li.active
+              a(href="#") servings
+            li
+              a(href="#") chefs
+            li
+              a(href="#") food groups
+            li
+              a(href="#") join us
+
+          ul.nav-right
+            li
+              a(href="#") sign in
+            li
+              form.pure-form
+                .input-append
+                  span.add-on
+                    input.pure-u-1-1(type="search", placeholder="search flambé")
+                  i.icon-search
+    //- end nav
+
+    //- content
+    .container
+      //- main sub-nav
+      .pure-menu.pure-menu-open.pure-menu-horizontal.header
+        ul
+          li.active
+            a(href="#") Popular
+          li
+            a(href="#") Everyone
+          li
+            a(href="#") Debuts
+      //- end main-subnav
+      //- login
+      ul.pure-u-1-4.login-items
+        li
+          a(href="/auth/twitter")
+            i.icon-twitter 
+            span.link-text login with Twitter
+        li
+          a(href="/auth/facebook")
+            i.icon-facebook
+            span.link-text login with Facebook
+        li
+          a(href="/auth/linkedin")
+            i.icon-linkedin 
+            span.link-text login with LinkedIn
+      
+
+    //- footer
+    .pure-menu.pure-menu-open.pure-menu-horizontal.footer
+      .container
+        .pure-g
+          .pure-u-1-4
+            p &copy; 2013 flambé. All rights.
+          .pure-u-1-4
+            p about flambé
+          .pure-u-1-4
+            p find talent
+          .pure-u-1-4
+            p flambé community
+    //- end footer
+    script(src='//ajax.googleapis.com/ajax/libs/jquery/1.10.2/jquery.min.js')
+    
+    script.
+      window.jQuery || document.write('<script src="assets/components/jquery.js"><\\/script>');
+    
+    // build:js scripts/vendor.js
+    // bower:js
+    script(src='assets/components/jquery.js')
+    // endbower
+
+    script(src='assets/js/scripts.min.js')
+      
+    script.
+      (function(f,l,a,m,b,e,_){f['GoogleAnalyticsObject']=b;f[b]=f[b]||function(){
+      (f[b].q=f[b].q||[]).push(arguments)},f[b].l=1*new Date();e=l.createElement(a),
+      _=l.getElementsByTagName(a)[0];e.async=1;e.src=m;_.parentNode.insertBefore(e,_)
+      })(window,document,'script','//www.google-analytics.com/analytics.js','ga');
+
+      ga('create', 'UA-44742315-1', 'blacktechies.org');
+      ga('send', 'pageview');
+
+    // build:js scripts/main.js
+    script(data-main='assets/js/main', src='assets/components/requirejs.js')
+    // endbuild

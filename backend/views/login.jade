@@ -1,5 +1,29 @@
 extends layout
 
 block content
-  //- login
-  a(href="/auth/twitter") login
+  //- content
+  .container
+    //- main sub-nav
+    .pure-menu.pure-menu-open.pure-menu-horizontal.header
+      ul
+        li.active
+          a(href="#") Popular
+        li
+          a(href="#") Everyone
+        li
+          a(href="#") Debuts
+    //- end main-subnav
+    //- login
+    ul.pure-u-1-4.login-items
+      li
+        a(href="/auth/twitter")
+          i.icon-twitter 
+          span.link-text login with Twitter
+      li
+        a(href="/auth/facebook")
+          i.icon-facebook
+          span.link-text login with Facebook
+      li
+        a(href="/auth/linkedin")
+          i.icon-linkedin 
+          span.link-text login with LinkedIn

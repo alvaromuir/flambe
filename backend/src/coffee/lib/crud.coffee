@@ -8,64 +8,54 @@ Post  = db.models.Post
 
 create = (model, doc, cb) ->
   model.create doc, (err, rslt) ->    
-    cb err if err
-    cb rslt
+    cb err, rslt
 
 find = (model, criteria, cb) ->
   model.find criteria, (err, rslt) ->    
-    cb err if err
-    cb rslt
+    cb err, rslt
 
 findById = (model, id, cb) ->
   model.findById id, (err, rslt) ->    
-    cb err if err
-    cb rslt
+    cb err, rslt
 
 findOne = (model, criteria, cb) ->
   model.findOne criteria, (err, rslt) ->    
-    cb err if err
-    cb rslt
+    cb err, rslt
 
 update = (model, criteria, updates, opt, cb) ->
   model.update criteria, updates, opt, (err, rsltCount, res) ->
-    cb err if err
     rslt = 
       total: rsltCount
       response: res
-    cb rslt
+    cb err, rslt
 
-updateByID = (model, id, updates, opt, cb) ->
+updateById = (model, id, updates, opt, cb) ->
   model.findByIdAndUpdate id, updates, opt, (err, rslt) ->    
-    cb err if err
-    cb rslt
+    cb err, rslt
 
 updateOne = (model, criteria, updates, opt, cb) ->
   model.findOneAndUpdate criteria, updates, opt, (err, rslt) ->    
-    cb err if err
-    cb rslt
+    cb err, rslt
 
 remove = (rcrd, criteria, cb) ->
   rcrd.remove criteria, (err) ->
-    cb err if err
+    cb err
 
 removeQuick = (model, criteria) ->
   removeQuery = model.remove criteria
   removeQuery.exec()
 
-removeByID = (model, id, opt, cb) ->
+removeById = (model, id, opt, cb) ->
   model.findByIdAndRemove id, opt, (err, rslt) ->    
-    cb err if err
-    cb rslt
+    cb err, rslt
 
 removeOne = (model, criteria, opt, cb) ->
   model.findOneAndRemove criteria, opt, (err, rslt) ->
-    cb err if err
-    cb rslt
+    cb err, rslt
 
 count = (model, criteria, cb) ->
   model.count criteria, (err, rslt) ->    
-    cb err if err
-    cb rslt
+    cb err, rslt
 
 
 
@@ -87,8 +77,8 @@ module.exports =
     update: (criteria, updates, opt, cb) ->
       update User, criteria, updates, opt, cb
 
-    updateByID: (id, updates, opt, cb) ->
-      updateByID User, id, updates, opt, cb
+    updateById: (id, updates, opt, cb) ->
+      updateById User, id, updates, opt, cb
 
     updateOne: (criteria, updates, opt, cb) ->
       updateOne User, criteria, updates, opt, cb
@@ -97,16 +87,96 @@ module.exports =
       remove rcrd, criteria, cb
 
     deleteQuick: (criteria) ->
-      remove User, criteria
+      removeQuick User, criteria
 
-    deleteByID: (id, opt, cb) ->
-      removeByID User, id, opt, cb
+    deleteById: (id, opt, cb) ->
+      removeById User, id, opt, cb
 
     deleteOne: (criteria, opt, cb) ->
       removeOne User, criteria, opt, cb
 
-
+    # util
     count: (criteria, cb) ->
-      count User, criteria, cb  
+      count User, criteria, cb
+
+    # social auth
+
+    findOrCreateUserByTwitterData: (data, promise) ->
+      findOne User, 'social.twitter.id_str': data.id_str, (err, rslt) ->
+        if err
+          promise.fail(err)
+        if rslt
+          promise.fulfill rslt
+        else
+          rslt = 
+            email: ''
+            name: data.name
+            userName: ''
+            displayName: data.name
+            status: 'New to flambé'
+            photoUrl: data.profile_image_url
+            social: 
+              twitter:
+                id_str: data.id_str
+                url: data.url
+                avatar: data.profile_image_url
+
+          create User, rslt, (err, rslt) ->
+            if err
+              promise.fail(err)
+            else
+              promise.fulfill rslt
+
+    findOrCreateUserByFacebookData: (data, promise) ->
+      findOne User, 'social.facebook.id': data.id, (err, rslt) ->
+        if err
+          promise.fail(err)
+        if rslt
+          promise.fulfill rslt
+        else
+          rslt = 
+            email: ''
+            name: data.name
+            userName: data.username
+            displayName: data.name
+            status: 'New to flambé'
+            photoUrl: "https://graph.facebook.com/" + data.id + "/picture?type=square"
+            social: 
+              facebook:
+                id: data.id
+                url: data.link
+                avatar: "https://graph.facebook.com/" + data.id + "/picture?type=square"
+
+          create User, rslt, (err, rslt) ->
+            if err
+              promise.fail(err)
+            else
+              promise.fulfill rslt
+
+    findOrCreateUserByLinkedinData: (data, promise) ->
+      findOne User, 'social.linkedin.id': data.id, (err, rslt) ->
+        if err
+          promise.fail(err)
+        if rslt
+          promise.fulfill rslt
+        else
+          rslt = 
+            email: ''
+            name: data.firstName + ' ' + data.lastName
+            userName: ''
+            displayName: data.firstName + ' ' + data.lastName
+            status: 'New to flambé'
+            photoUrl: data.pictureUrl
+            social: 
+              linkedin:
+                id: data.id
+                url: data.publicProfileUrl
+                avatar: data.pictureUrl
+
+          create User, rslt, (err, rslt) ->
+            if err
+              promise.fail(err)
+            else
+              promise.fulfill rslt
 
   Post: {}

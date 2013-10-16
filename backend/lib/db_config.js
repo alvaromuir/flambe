@@ -20,8 +20,6 @@
 
   connLength = mongoose.connections.length;
 
-  console.log('Connection #' + connLength + ' to ' + connStr);
-
   appSchemas = {};
 
   models = {};

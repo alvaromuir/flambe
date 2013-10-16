@@ -1,0 +1,7 @@
+ToDo:
+
+10.16.13
+
+1. Modal to get users to enter a email, username
+2. Search for better brand/domain
+3. Initial work on post model

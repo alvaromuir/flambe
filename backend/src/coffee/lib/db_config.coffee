@@ -4,7 +4,7 @@ mongoose  = require 'mongoose'
 _         = require 'lodash'
 
 setup     = require './setup'
-schemas    = require './schema'
+schemas   = require './schema'
 
 dbURI     = setup.dataBaseURI
 srvName   = setup.serverName
@@ -13,7 +13,7 @@ connStr   = 'mongodb://' + dbURI + '/' + srvName
 # Database initialization
 mongoose.connect connStr
 connLength = mongoose.connections.length
-console.log 'Connection #' + connLength + ' to ' + connStr
+# console.log 'Connection #' + connLength + ' to ' + connStr
 
 # Schema definition
 appSchemas = {}
