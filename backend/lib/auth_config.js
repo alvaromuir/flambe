@@ -26,7 +26,7 @@
         User.findOrCreateUserByTwitterData(data, promise);
         return promise;
       });
-      everyauth.twitter.redirectPath('/');
+      everyauth.twitter.redirectPath('/welcome');
       everyauth.facebook.appId(keys.facebook.appId);
       everyauth.facebook.appSecret(keys.facebook.appSecret);
       everyauth.facebook.findOrCreateUser(function(session, accessToken, accessTokExtra, data) {
@@ -35,7 +35,7 @@
         User.findOrCreateUserByFacebookData(data, promise);
         return promise;
       });
-      everyauth.facebook.redirectPath('/');
+      everyauth.facebook.redirectPath('/welcome');
       everyauth.linkedin.consumerKey(keys.linkedin.consumerKey);
       everyauth.linkedin.consumerSecret(keys.linkedin.consumerSecret);
       everyauth.linkedin.findOrCreateUser(function(session, accessToken, accessTokenSecret, data) {
@@ -44,7 +44,7 @@
         User.findOrCreateUserByLinkedinData(data, promise);
         return promise;
       });
-      return everyauth.linkedin.redirectPath('/');
+      return everyauth.linkedin.redirectPath('/welcome');
     }
   };
 

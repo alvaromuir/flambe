@@ -577,6 +577,25 @@ ul.login-items {
 }
 
 /* --------------------------
+ * Welcome 
+ * --------------------------
+*/
+
+.assume {
+  color: $orange;
+  font-size: 125%;
+}
+.agree {
+  margin: 2px 0 0 3px;
+  a {
+    color: $lgt_blue;
+  }
+  a:hover {
+    color: $orange;
+  }
+}
+
+/* --------------------------
  * Footer
  * --------------------------
 */

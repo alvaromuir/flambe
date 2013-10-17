@@ -5,7 +5,7 @@ Module dependencies.
 
 
 (function() {
-  var app, auth, dbConfig, dbSetup, details, everyauth, express, http, path, profile, routes, setup, tools;
+  var app, auth, dbConfig, dbSetup, details, everyauth, express, http, path, profile, routes, setup, tools, _, _str;
 
   express = require('express');
 
@@ -14,6 +14,10 @@ Module dependencies.
   path = require('path');
 
   everyauth = require('everyauth');
+
+  _ = require('lodash');
+
+  _str = require('underscore.string');
 
   routes = require('./routes');
 
@@ -28,6 +32,10 @@ Module dependencies.
   setup = require('./lib/setup');
 
   tools = require('./lib/tools');
+
+  _.mixin(_str.exports());
+
+  _.mixin(require('underscore.inflections'));
 
   app = express();
 
@@ -74,6 +82,8 @@ Module dependencies.
   app.get('/details', details.index);
 
   app.get('/profile', profile.index);
+
+  app.get('/welcome', routes.welcome);
 
   http.createServer(app).listen(app.get('port'), function() {
     return console.log('Express server listening on port ' + app.get('port'));

@@ -1,0 +1,151 @@
+!!! 5
+html.no-js
+  head
+    meta(charset='utf-8')
+    title flambé.
+    meta(http-equiv='X-UA-Compatible', content='IE=edge')
+    meta(name='description', content='')
+    meta(name='viewport', content='width=device-width,initial-scale=1')
+    link(href='//www.google-analytics.com', rel='dns-prefetch')
+    link(href='//ajax.googleapis.com', rel='dns-prefetch')
+    link(href='assets/css/style.min.css', rel='stylesheet')
+    script(src='assets/components/modernizr.js')
+  body(style='')
+    //- nav
+    .pure-menu.pure-menu-open.pure-menu-horizontal.top-nav
+      .container
+        .pure-menu.pure-menu-open.pure-menu-horizontal.top-nav
+          a.pure-menu-heading(href="/")
+            img.hero(src="/assets/img/logo.png")
+          ul
+            li.active
+              a(href="#") servings
+            li
+              a(href="#") chefs
+            li
+              a(href="#") food groups
+            li
+              a(href="#") join us
+
+          ul.nav-right
+            //- li
+            //-   a(href="#") sign in
+            li
+              .user-welcome
+                .user-links
+                  a.greeting(href="/profile.html") Welcome, Beyoncé
+                  a.logout(href="#") 
+                    i.icon-remove-sign.pull-left 
+                    span.text logout
+                  .clearfix    
+                a(href="/profile.html")
+                  img(src="assets/img/avatars/beyonce.jpg")
+            li
+              form.pure-form
+                .input-append
+                  span.add-on
+                    input.pure-u-1-1(type="search", placeholder="search flambé")
+                  i.icon-search
+    //- end nav
+
+    //- content
+    .container
+      //- main sub-nav
+      .pure-menu.pure-menu-open.pure-menu-horizontal.header
+        ul
+          li.active
+            a(href="#") Popular
+          li
+            a(href="#") Everyone
+          li
+            a(href="#") Debuts
+      //- end main-subnav
+
+      //- main content
+      .content
+        h1 Welcome to our community, Beyonce!
+        span.assume May we call you Beyonce? Let us know.   
+        form.pure-form.pure-form-stacked
+          fieldset
+            legend Below are some other questions that will help us get to know you better:
+            .pure-g-r
+              .pure-u-1-3
+                label(for='first-name') First Name
+                input#first-name(type='text', required='required')
+              .pure-u-1-3
+                label(for='last-name') Last Name
+                input#last-name(type='text', required='required')
+              .pure-u-1-3
+                label(for='email') E-Mail
+                input#email(type='email', required='required', placeholder="required")
+              .pure-u-1-3
+                label(for='username') Prefered flambé username
+                input#username(type='text', required='required')
+            label.pure-checkbox(for='terms')
+              input#terms(type='checkbox')
+              span.agree I've read the 
+                a(href="/legal") terms and conditions
+            button.pure-button.pure-button-primary(type='submit') Submit
+      //- end main-content
+
+      //- gallery-nav
+      .gallery-nav
+        a.pure-button.push-right(href="#")
+          i.icon-arrow-left.pull-left
+          span.label-left Chill
+
+        a.pure-button(href="#")
+          span.label-right Warm
+          i.icon-arrow-right.pull-right 
+      //- end gallery-nav
+
+      //- sub-content
+      .sub-content
+        .pure-g-r
+          .pure-u-1-3
+            p Ads via Some Ad Network TBD
+          .pure-u-1-3
+            p Work for Food Professionals
+          .pure-u-1-3
+            img.sub-content-logo(src="/assets/img/logo.svg")
+            span.intro What's cookin' ? flambé is where food lovers share.
+      //- end sub-content
+    //- end content
+
+    //- footer
+    .pure-menu.pure-menu-open.pure-menu-horizontal.footer
+      .container
+        .pure-g-r
+          .pure-u-1-4
+            p &copy; 2013 flambé. All rights.
+          .pure-u-1-4
+            p about flambé
+          .pure-u-1-4
+            p find talent
+          .pure-u-1-4
+            p flambé community
+    //- end footer
+    script(src='//ajax.googleapis.com/ajax/libs/jquery/1.10.2/jquery.min.js')
+    
+    script.
+      window.jQuery || document.write('<script src="assets/components/jquery.js"><\\/script>');
+    
+    // build:js scripts/vendor.js
+    // bower:js
+    script(src='assets/components/jquery.js')
+    // endbower
+
+    script(src='assets/js/scripts.min.js')
+      
+    script.
+      (function(f,l,a,m,b,e,_){f['GoogleAnalyticsObject']=b;f[b]=f[b]||function(){
+      (f[b].q=f[b].q||[]).push(arguments)},f[b].l=1*new Date();e=l.createElement(a),
+      _=l.getElementsByTagName(a)[0];e.async=1;e.src=m;_.parentNode.insertBefore(e,_)
+      })(window,document,'script','//www.google-analytics.com/analytics.js','ga');
+
+      ga('create', 'UA-44742315-1', 'blacktechies.org');
+      ga('send', 'pageview');
+
+    // build:js scripts/main.js
+    script(data-main='assets/js/main', src='assets/components/requirejs.js')
+    // endbuild

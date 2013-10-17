@@ -6,6 +6,8 @@ express   = require 'express'
 http      = require 'http'
 path      = require 'path'
 everyauth = require 'everyauth'
+_         = require 'lodash'
+_str      = require 'underscore.string'
 
 routes    = require './routes'
 details   = require './routes/details'
@@ -16,6 +18,9 @@ auth      = require './lib/auth_config'
 dbConfig  = require './lib/db_config'
 setup     = require './lib/setup'
 tools     = require './lib/tools'
+
+_.mixin _str.exports()
+_.mixin require 'underscore.inflections'
 
 app       = express()
 
@@ -57,6 +62,7 @@ app.get '/', routes.index
 app.get '/login', routes.login
 app.get '/details', details.index
 app.get '/profile', profile.index
+app.get '/welcome', routes.welcome
 
 # Here. We. Go.
 http.createServer(app).listen app.get('port'), ->

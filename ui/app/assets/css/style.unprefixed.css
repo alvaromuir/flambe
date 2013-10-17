@@ -4337,6 +4337,25 @@ ul.login-items li a [class^="icon-"], ul.login-items li a [class*=" icon-"] {
 }
 
 /* --------------------------
+ * Welcome 
+ * --------------------------
+*/
+.assume {
+  color: #ff6e12;
+  font-size: 125%;
+}
+
+.agree {
+  margin: 2px 0 0 3px;
+}
+.agree a {
+  color: #71acda;
+}
+.agree a:hover {
+  color: #ff6e12;
+}
+
+/* --------------------------
  * Footer
  * --------------------------
 */

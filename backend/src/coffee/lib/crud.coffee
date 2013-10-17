@@ -1,6 +1,7 @@
 # Users setup
 
 db = require './db_config'
+_  = require 'lodash'
 
 User  = db.models.User
 Post  = db.models.Post
@@ -18,8 +19,8 @@ findById = (model, id, cb) ->
   model.findById id, (err, rslt) ->    
     cb err, rslt
 
-findOne = (model, criteria, cb) ->
-  model.findOne criteria, (err, rslt) ->    
+findOne = (model, criteria, fields, opt, cb) ->
+  model.findOne criteria, fields, opt, (err, rslt) ->    
     cb err, rslt
 
 update = (model, criteria, updates, opt, cb) ->
@@ -57,8 +58,16 @@ count = (model, criteria, cb) ->
   model.count criteria, (err, rslt) ->    
     cb err, rslt
 
+checkUserName = (usrName, cb, orig) ->
+  User.findOne userName: usrName, null, null, (err, rslt) ->
+    if rslt
+      orig = usrName
+      userName = orig + _.random 1, 9999
+      checkUserName userName, cb, orig
+    else
+      cb usrName
 
-
+# Public methods
 module.exports = 
   setup: db
   User: 
@@ -71,8 +80,8 @@ module.exports =
     readById: (id, cb) ->
       findById User, id, cb
 
-    readOne: (criteria, cb) ->
-      findOne User, criteria, cb
+    readOne: (criteria, fields, opt, cb) ->
+      findOne User, criteria, fields, opt, cb
 
     update: (criteria, updates, opt, cb) ->
       update User, criteria, updates, opt, cb
@@ -99,6 +108,9 @@ module.exports =
     count: (criteria, cb) ->
       count User, criteria, cb
 
+    suggestUserName: (usrName, cb) ->
+      checkUserName usrName, cb
+
     # social auth
 
     findOrCreateUserByTwitterData: (data, promise) ->
@@ -108,24 +120,26 @@ module.exports =
         if rslt
           promise.fulfill rslt
         else
-          rslt = 
-            email: ''
-            name: data.name
-            userName: ''
-            displayName: data.name
-            status: 'New to flambé'
-            photoUrl: data.profile_image_url
-            social: 
-              twitter:
-                id_str: data.id_str
-                url: data.url
-                avatar: data.profile_image_url
+          suggUserName = (data.name.split(' ')[0] + data.name.split(' ')[1]).toLowerCase()
+          checkUserName suggUserName, (suggestion) ->
+            rslt = 
+              email: ''
+              name: data.name
+              userName: suggestion
+              displayName: data.name
+              status: 'New to flambé'
+              photoUrl: data.profile_image_url
+              social: 
+                twitter:
+                  id_str: data.id_str
+                  url: data.url
+                  avatar: data.profile_image_url
 
-          create User, rslt, (err, rslt) ->
-            if err
-              promise.fail(err)
-            else
-              promise.fulfill rslt
+            create User, rslt, (err, rslt) ->
+              if err
+                promise.fail(err)
+              else
+                promise.fulfill rslt
 
     findOrCreateUserByFacebookData: (data, promise) ->
       findOne User, 'social.facebook.id': data.id, (err, rslt) ->
@@ -134,24 +148,26 @@ module.exports =
         if rslt
           promise.fulfill rslt
         else
-          rslt = 
-            email: ''
-            name: data.name
-            userName: data.username
-            displayName: data.name
-            status: 'New to flambé'
-            photoUrl: "https://graph.facebook.com/" + data.id + "/picture?type=square"
-            social: 
-              facebook:
-                id: data.id
-                url: data.link
-                avatar: "https://graph.facebook.com/" + data.id + "/picture?type=square"
+          suggUserName = (data.name.split(' ')[0] + data.name.split(' ')[1]).toLowerCase()
+          checkUserName suggUserName, (suggestion) ->
+            rslt = 
+              email: ''
+              name: data.name
+              userName: suggestion
+              displayName: data.name
+              status: 'New to flambé'
+              photoUrl: "https://graph.facebook.com/" + data.id + "/picture?type=square"
+              social: 
+                facebook:
+                  id: data.id
+                  url: data.link
+                  avatar: "https://graph.facebook.com/" + data.id + "/picture?type=square"
 
-          create User, rslt, (err, rslt) ->
-            if err
-              promise.fail(err)
-            else
-              promise.fulfill rslt
+            create User, rslt, (err, rslt) ->
+              if err
+                promise.fail(err)
+              else
+                promise.fulfill rslt
 
     findOrCreateUserByLinkedinData: (data, promise) ->
       findOne User, 'social.linkedin.id': data.id, (err, rslt) ->
@@ -160,23 +176,25 @@ module.exports =
         if rslt
           promise.fulfill rslt
         else
-          rslt = 
-            email: ''
-            name: data.firstName + ' ' + data.lastName
-            userName: ''
-            displayName: data.firstName + ' ' + data.lastName
-            status: 'New to flambé'
-            photoUrl: data.pictureUrl
-            social: 
-              linkedin:
-                id: data.id
-                url: data.publicProfileUrl
-                avatar: data.pictureUrl
+          suggUserName = (data.firstName + data.lastName).toLowerCase()
+          checkUserName suggUserName, (suggestion) ->
+            rslt = 
+              email: ''
+              name: data.firstName + ' ' + data.lastName
+              userName: suggestion
+              displayName: data.firstName + ' ' + data.lastName
+              status: 'New to flambé'
+              photoUrl: data.pictureUrl
+              social: 
+                linkedin:
+                  id: data.id
+                  url: data.publicProfileUrl
+                  avatar: data.pictureUrl
 
-          create User, rslt, (err, rslt) ->
-            if err
-              promise.fail(err)
-            else
-              promise.fulfill rslt
+            create User, rslt, (err, rslt) ->
+              if err
+                promise.fail(err)
+              else
+                promise.fulfill rslt
 
   Post: {}

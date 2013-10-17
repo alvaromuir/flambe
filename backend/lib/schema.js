@@ -11,7 +11,7 @@
       model: {
         email: String,
         name: String,
-        username: String,
+        userName: String,
         displayName: String,
         status: String,
         photoUrl: String,

@@ -24,7 +24,7 @@ module.exports =
       promise = this.Promise()
       User.findOrCreateUserByTwitterData data, promise
       promise
-    everyauth.twitter.redirectPath '/'
+    everyauth.twitter.redirectPath '/welcome'
 
     # Facebook auth
     everyauth.facebook.appId keys.facebook.appId
@@ -37,7 +37,7 @@ module.exports =
       promise = this.Promise()
       User.findOrCreateUserByFacebookData data, promise
       promise
-    everyauth.facebook.redirectPath '/'
+    everyauth.facebook.redirectPath '/welcome'
 
     # LinkedIn auth
     everyauth.linkedin.consumerKey keys.linkedin.consumerKey
@@ -46,5 +46,5 @@ module.exports =
       promise = this.Promise()
       User.findOrCreateUserByLinkedinData data, promise
       promise
-    everyauth.linkedin.redirectPath '/'
+    everyauth.linkedin.redirectPath '/welcome'
 
