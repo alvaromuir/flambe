@@ -12,9 +12,14 @@ module.exports =
       displayName: String
       status: String
       photoUrl: String
+      website: String
+      aboutMe: String
       social: {}
       # _id: false
       # id: String
+      completedBasicProfile:
+        type: Boolean
+        default: false
       validated: 
         type: Boolean
         default: false

@@ -1,36 +1,27 @@
 # General controller
 
-exports.index = (req, res) ->
-  if req.loggedIn
-    userData = req.user
-
-    res.render 'index', 
-      title: 'flambé'
-      greetingName: userData.displayName.split(' ')[0]
-      displayName: userData.displayName
-      userName: userData.userName
-      avatar: userData.photoUrl
-
-  else
-    res.render 'index', 
-      title: 'flambé'
+main    = require './main'
+details = require './details'
+profile = require './profile'
+rest	= require './rest'
 
 
-exports.login = (req, res) ->
-    res.render 'login', 
-      title: 'login | flambé'
+exports.addRoutes = (app) ->
+  app.get '/',        main.index
+  app.get '/login',   main.login
+  app.get '/welcome', main.welcome
+  app.get '/details', details.index
+  app.get '/chef/:username', profile.index
+  app.get '/user/:id', profile.byId
 
-exports.welcome = (req, res) ->
-  if req.loggedIn
-    userData  = req.user
+  # Rest
+  app.get '/api/users',     rest.users
+  app.get '/api/users/:id', rest.user
 
-    res.render 'welcome', 
-      title: 'Welcome flambé'
-      greetingName: userData.displayName.split(' ')[0]
-      lastName: userData.displayName.split(' ')[1]
-      userName: userData.userName
-      avatar: userData.photoUrl
+  # Rest utils
+  app.get '/api/users/by/username/:username',   rest.userByUserName
+  app.get '/api/utils/checkusername/:username', rest.checkUserName
+  app.get '/api/utils/checkemail/:email',       rest.checkEmailExists
 
-  else
-    res.render 'welcome', 
-      title: 'flambé'
+  # Dev testing
+  app.put '/acct/setup/:id', main.acctSetup

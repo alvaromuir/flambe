@@ -71,33 +71,28 @@ html.no-js
             .pure-g-r
               .pure-u-1-3
                 label(for='first-name') First Name
-                input#first-name(type='text', required='required')
+                input#first-name(type='text', name='firstName', required='required')
               .pure-u-1-3
                 label(for='last-name') Last Name
-                input#last-name(type='text', required='required')
+                input#last-name(type='text', name='lastName', required='required')
               .pure-u-1-3
                 label(for='email') E-Mail
-                input#email(type='email', required='required', placeholder="required")
+                input#email(type='email', required='required', name='email', placeholder="required")
+                .hint
               .pure-u-1-3
                 label(for='username') Prefered flambé username
-                input#username(type='text', required='required')
+                input#username(type='text', name='username', required='required')
+              .pure-u-1-3
+                .username_warning
+                  .warning.pure-alert.pure-alert-warning
+                    | Sorry! That username is taken. Hows about 
+                    a.email-suggest(href='#') alvaro456?
             label.pure-checkbox(for='terms')
               input#terms(type='checkbox')
               span.agree I've read the 
                 a(href="/legal") terms and conditions
-            button.pure-button.pure-button-primary(type='submit') Submit
+            button#submit-btn.pure-button.pure-button-primary.pure-button-disabled(type='submit') Submit
       //- end main-content
-
-      //- gallery-nav
-      .gallery-nav
-        a.pure-button.push-right(href="#")
-          i.icon-arrow-left.pull-left
-          span.label-left Chill
-
-        a.pure-button(href="#")
-          span.label-right Warm
-          i.icon-arrow-right.pull-right 
-      //- end gallery-nav
 
       //- sub-content
       .sub-content
@@ -136,7 +131,6 @@ html.no-js
     // endbower
 
     script(src='assets/js/scripts.min.js')
-      
     script.
       (function(f,l,a,m,b,e,_){f['GoogleAnalyticsObject']=b;f[b]=f[b]||function(){
       (f[b].q=f[b].q||[]).push(arguments)},f[b].l=1*new Date();e=l.createElement(a),
@@ -149,3 +143,7 @@ html.no-js
     // build:js scripts/main.js
     script(data-main='assets/js/main', src='assets/components/requirejs.js')
     // endbuild
+
+
+    script(src='assets/components/mailcheck.js')
+    script(src='assets/js/welcome_validate.js')

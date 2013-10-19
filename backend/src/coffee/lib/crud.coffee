@@ -15,8 +15,8 @@ find = (model, criteria, cb) ->
   model.find criteria, (err, rslt) ->    
     cb err, rslt
 
-findById = (model, id, cb) ->
-  model.findById id, (err, rslt) ->    
+findById = (model, id, fields, opt, cb) ->
+  model.findById id, fields, opt, (err, rslt) ->    
     cb err, rslt
 
 findOne = (model, criteria, fields, opt, cb) ->
@@ -67,6 +67,13 @@ checkUserName = (usrName, cb, orig) ->
     else
       cb usrName
 
+checkEmailExists = (email, cb) ->
+  User.findOne email: email, null, null, (err, rslt) ->
+    if rslt
+      cb 1
+    else
+      cb 0
+
 # Public methods
 module.exports = 
   setup: db
@@ -77,8 +84,8 @@ module.exports =
     read: (criteria, cb) ->
       find User, criteria, cb
 
-    readById: (id, cb) ->
-      findById User, id, cb
+    readById: (id, fields, opt, cb) ->
+      findById User, id, fields, opt, cb
 
     readOne: (criteria, fields, opt, cb) ->
       findOne User, criteria, fields, opt, cb
@@ -111,6 +118,9 @@ module.exports =
     suggestUserName: (usrName, cb) ->
       checkUserName usrName, cb
 
+    checkExistingEmail: (email, cb) ->
+      checkEmailExists email, cb
+
     # social auth
 
     findOrCreateUserByTwitterData: (data, promise) ->
@@ -127,12 +137,13 @@ module.exports =
               name: data.name
               userName: suggestion
               displayName: data.name
-              status: 'New to flambé'
+              status: 'Joined flambé on ' + moment().format('MMM Do, YYYY')
               photoUrl: data.profile_image_url
+              website: data.url
               social: 
                 twitter:
                   id_str: data.id_str
-                  url: data.url
+                  url: 'https://twitter.com/' + data.screen_name
                   avatar: data.profile_image_url
 
             create User, rslt, (err, rslt) ->
@@ -151,11 +162,11 @@ module.exports =
           suggUserName = (data.name.split(' ')[0] + data.name.split(' ')[1]).toLowerCase()
           checkUserName suggUserName, (suggestion) ->
             rslt = 
-              email: ''
+              email: suggUserName + '@facebook.com'
               name: data.name
               userName: suggestion
               displayName: data.name
-              status: 'New to flambé'
+              status: 'Joined flambé on ' + moment().format('MMM Do, YYYY')
               photoUrl: "https://graph.facebook.com/" + data.id + "/picture?type=square"
               social: 
                 facebook:
@@ -183,7 +194,7 @@ module.exports =
               name: data.firstName + ' ' + data.lastName
               userName: suggestion
               displayName: data.firstName + ' ' + data.lastName
-              status: 'New to flambé'
+              status: 'Joined flambé on ' + moment().format('MMM Do, YYYY')
               photoUrl: data.pictureUrl
               social: 
                 linkedin:

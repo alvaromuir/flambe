@@ -6,3 +6,5 @@ ToDo:
 2. Search for better brand/domain
 3. Initial work on post model
 4. Wire-up welcome page to accept change, require user goes no further until done.
+5. Add restful API
+6. Move routing to a seperate file out of the master app file

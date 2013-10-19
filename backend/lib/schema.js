@@ -15,7 +15,13 @@
         displayName: String,
         status: String,
         photoUrl: String,
+        website: String,
+        aboutMe: String,
         social: {},
+        completedBasicProfile: {
+          type: Boolean,
+          "default": false
+        },
         validated: {
           type: Boolean,
           "default": false

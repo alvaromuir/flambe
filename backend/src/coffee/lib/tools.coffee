@@ -1,7 +1,12 @@
 # Some utilities
-
-fs = require 'fs'
+moment  = require 'moment'
 
 module.exports = 
-	echo: (data) ->
-		return data
+  echo: (data) ->
+    data
+
+  shortDate: (date) ->
+    moment(date).format('MM.DD.YYYY')
+
+  fromNow: (date) ->
+    moment(date).fromNow()

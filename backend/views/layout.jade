@@ -8,8 +8,8 @@ html.no-js
     meta(name='viewport', content='width=device-width,initial-scale=1')
     link(href='//www.google-analytics.com', rel='dns-prefetch')
     link(href='//ajax.googleapis.com', rel='dns-prefetch')
-    link(href='assets/css/style.min.css', rel='stylesheet')
-    script(src='assets/components/modernizr.js')
+    link(href='/assets/css/style.min.css', rel='stylesheet')
+    script(src='/assets/components/modernizr.js')
   body(style='')
     include header
     block content
@@ -21,11 +21,17 @@ html.no-js
     
     // build:js scripts/vendor.js
     // bower:js
-    script(src='assets/components/jquery.js')
+    script(src='/assets/components/jquery.js')
     // endbower
 
-    script(src='assets/js/scripts.min.js')
-      
+    script(src='/assets/js/scripts.min.js')
+
+    // build:js scripts/main.js
+    script(data-main='/assets/js/main', src='/assets/components/requirejs.js')
+    // endbuild
+
+    block scripts
+    
     script.
       (function(f,l,a,m,b,e,_){f['GoogleAnalyticsObject']=b;f[b]=f[b]||function(){
       (f[b].q=f[b].q||[]).push(arguments)},f[b].l=1*new Date();e=l.createElement(a),
@@ -34,7 +40,3 @@ html.no-js
 
       ga('create', 'UA-44742315-1', 'blacktechies.org');
       ga('send', 'pageview');
-
-    // build:js scripts/main.js
-    script(data-main='assets/js/main', src='assets/components/requirejs.js')
-    // endbuild

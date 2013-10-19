@@ -15,16 +15,17 @@
       ul.nav-right
         li
           if everyauth.loggedIn
+            - var greetingName = user.displayName.split(' ')[0]
             li
               .user-welcome
                 .user-links
-                  a.greeting(href="/profile.html") Welcome, #{greetingName}
+                  a.greeting(href="/chef/#{user.userName}") Welcome, #{greetingName}
                   a.logout(href="/logout") 
                     i.icon-remove-sign.pull-left 
                     span.text logout
                   .clearfix    
-                a(href="/profile.html")
-                  img(src="#{avatar}", alt="#{displayName}")
+                a(href="/chef/#{user.userName}")
+                  img(src="#{user.photoUrl}", alt="#{user.displayName}")
               
           else
             a(href="/login") sign in

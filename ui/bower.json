@@ -12,6 +12,7 @@
     "requirejs": "~2.1.8",
     "pure-extras": "*",
     "font-awesome": "~3.2.1",
-    "pure-typography": "*"
+    "pure-typography": "*",
+    "mailcheck": "~1.0.3"
   }
 }

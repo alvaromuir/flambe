@@ -72,18 +72,12 @@ Module dependencies.
 
   if ('development' === app.get('env')) {
     app.use(express.errorHandler());
+    app.use(express.logger('dev'));
+    auth.debug = true;
     app.locals.pretty = true;
   }
 
-  app.get('/', routes.index);
-
-  app.get('/login', routes.login);
-
-  app.get('/details', details.index);
-
-  app.get('/profile', profile.index);
-
-  app.get('/welcome', routes.welcome);
+  require('./routes').addRoutes(app);
 
   http.createServer(app).listen(app.get('port'), function() {
     return console.log('Express server listening on port ' + app.get('port'));
