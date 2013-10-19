@@ -7,7 +7,9 @@ Dependenicies:
 
 ### To Use
 
-`$ NPM install
+```
+	$ NPM install
 	$ grunt-dev.command
+```
 
 @alvaromuir
