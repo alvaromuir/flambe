@@ -12,4 +12,7 @@ Dependenicies:
 	$ grunt-dev.command
 ```
 
-@alvaromuir
+
+When possible, updated files from app/assets/css should be copied over to backend/public/assets/css
+
+Alvaro Muir, @alvaromuir
