@@ -142,12 +142,14 @@ describe "Database setup", ->
         query[random_key] = random_usr[random_key]
 
         User.read query, (err, rslt) ->
+
           if rslt[0]
             User.delete rslt[0], (err) ->
               User.readById rslt[0]._id, (err, rslt) ->
                 done(err) if err
                 expect(rslt).to.not.exist
                 done()
+          done()
 
 
       it "should be able to delete a record by ID", (done) ->

@@ -16,4 +16,7 @@ logs
 results
 
 npm-debug.log
+.gitignore
 node_modules
+
+*.sass-cache*
