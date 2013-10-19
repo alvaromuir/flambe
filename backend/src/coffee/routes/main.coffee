@@ -37,7 +37,7 @@ exports.welcome = (req, res) ->
       res.redirect '/chef/' + req.user.userName
     else
       res.render 'welcome', 
-        title: 'Welcome flambé'
+        title: 'Welcome flambé, req.user.displayName | flambé'
   else
     res.redirect '/'
 

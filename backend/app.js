@@ -71,10 +71,10 @@ Module dependencies.
   app.use(express["static"](path.join(__dirname, 'public')));
 
   if ('development' === app.get('env')) {
-    app.use(express.errorHandler());
     app.use(express.logger('dev'));
-    auth.debug = true;
+    app.use(express.errorHandler());
     app.locals.pretty = true;
+    auth.debug = true;
   }
 
   require('./routes').addRoutes(app);

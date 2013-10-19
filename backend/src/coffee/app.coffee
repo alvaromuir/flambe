@@ -37,7 +37,7 @@ auth.init everyauth
 app.set 'port', process.env.PORT or 3000
 app.set 'views', __dirname + '/views'
 app.set 'view engine', 'jade'
- app.use express.logger 'dev'
+
 app.use express.favicon path.join(__dirname, 'public/favicon.ico') 
 app.use express.bodyParser()
 app.use express.cookieParser('iz bklyn in da house')
@@ -48,12 +48,14 @@ app.use express.methodOverride()
 app.use app.router
 app.use express.static path.join(__dirname, 'public')
 
-auth.debug = true
+
 
 # development only
 if 'development' is app.get('env')
+  app.use express.logger 'dev'
   app.use express.errorHandler()
   app.locals.pretty = true
+  auth.debug = true
 
 
 #routes

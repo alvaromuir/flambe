@@ -44,7 +44,7 @@
         return res.redirect('/chef/' + req.user.userName);
       } else {
         return res.render('welcome', {
-          title: 'Welcome flambé'
+          title: 'Welcome flambé, req.user.displayName | flambé'
         });
       }
     } else {
