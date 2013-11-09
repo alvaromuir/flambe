@@ -4333,17 +4333,35 @@ html a {
 }
 
 .pure-menu.pure-menu-open.pure-menu-horizontal.top-nav .nav-right .user-welcome .user-links .greeting {
-  float: left;
-  text-align: right;
-  line-height: 14px;
-  margin: 0 -5px 5px 0;
+  clear: both;
+  width: 100%;
+  line-height: 1em;
   padding: 0;
+  margin: -5px 0 0 0;
 }
 
-.pure-menu.pure-menu-open.pure-menu-horizontal.top-nav .nav-right .user-welcome .user-links a.logout {
+.pure-menu.pure-menu-open.pure-menu-horizontal.top-nav .nav-right .user-welcome .user-links .greeting a {
   float: right;
+}
+
+.pure-menu.pure-menu-open.pure-menu-horizontal.top-nav .nav-right .user-welcome .user-links .actions {
+  width: 100%;
+  text-align: right;
+  font-size: smaller;
   clear: left;
-  margin: -5px;
+}
+
+.pure-menu.pure-menu-open.pure-menu-horizontal.top-nav .nav-right .user-welcome .user-links .actions a.post {
+  float: right;
+  text-align: right;
+  padding: 0;
+  line-height: 1em;
+}
+
+.pure-menu.pure-menu-open.pure-menu-horizontal.top-nav .nav-right .user-welcome .user-links .actions a.logout {
+  float: right;
+  text-align: right;
+  margin: 0 0 0 10px;
   padding: 0;
   line-height: 1em;
 }

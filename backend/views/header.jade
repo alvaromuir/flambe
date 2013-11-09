@@ -19,10 +19,16 @@
             li
               .user-welcome
                 .user-links
-                  a.greeting(href="/chef/#{user.userName}") Welcome, #{greetingName}
-                  a.logout(href="/logout") 
-                    i.icon-remove-sign.pull-left 
-                    span.text logout
+                  .greeting
+                    a(href="/chef/#{user.userName}") Welcome, #{greetingName}
+                  .actions
+                    a.logout(href="/logout") 
+                      i.icon-remove-sign.pull-left 
+                      span.text logout
+
+                    a.post(href="/post") 
+                      i.icon-camera.pull-left 
+                      span.text post
                   .clearfix    
                 a(href="/chef/#{user.userName}")
                   img(src="#{user.photoUrl}", alt="#{user.displayName}")

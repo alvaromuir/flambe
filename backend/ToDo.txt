@@ -2,7 +2,7 @@ ToDo:
 
 10.16.13
 
-1. Modal to get users to enter a email, username
+1. Model to get users to enter a email, username
 2. Search for better brand/domain
 3. Initial work on post model
 4. Wire-up welcome page to accept change, require user goes no further until done.

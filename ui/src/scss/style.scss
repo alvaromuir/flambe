@@ -114,18 +114,37 @@ body, html {
         padding: 0;
         float: left;
         .greeting {
-          float: left;
-          text-align: right;
-          line-height: 14px;
-          margin: 0 -5px 5px 0;
-          padding: 0;
-        }
-        a.logout {
-          float: right;
-          clear: left;
-          margin: -5px;
-          padding: 0;
+          // float: right;
+          clear: both;
+          width: 100%;
           line-height: 1em;
+          padding: 0;
+          margin: -5px 0 0 0;
+          a {
+            float: right;
+          }
+        }
+        .actions {
+          // float: right;
+          width: 100%;
+          text-align: right;
+          font-size: smaller;
+          clear: left;
+
+          a.post {
+            float: right;
+            text-align: right;
+            padding: 0;
+            line-height: 1em;
+          }
+
+          a.logout {
+            float: right;
+            text-align: right;
+            margin: 0 0 0 10px;
+            padding: 0;
+            line-height: 1em;
+          }
         }
       }
       img {

@@ -33,10 +33,18 @@ html.no-js
             li
               .user-welcome
                 .user-links
-                  a.greeting(href="/profile.html") Welcome, Beyoncé
-                  a.logout(href="#") 
-                    i.icon-remove-sign.pull-left 
-                    span.text logout
+                  .greeting
+                    a(href="/profile.html") Welcome, Beyoncé
+                  .actions
+                    a.logout(href="#") 
+                      i.icon-remove-sign.pull-left 
+                      span.text logout
+
+                    a.post(href="#") 
+                      i.icon-camera.pull-left 
+                      span.text post
+
+
                   .clearfix    
                 a(href="/profile.html")
                   img(src="assets/img/avatars/beyonce.jpg")
