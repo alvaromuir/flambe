@@ -92,17 +92,7 @@ module.exports = (grunt) ->
     clean:
       dist: ["<%= project.assets %>/css/style.unprefixed.css", "<%= project.assets %>/css/style.prefixed.css"]
 
-    
-    ###
-    JSHint
-    https://github.com/gruntjs/grunt-contrib-jshint
-    Manage the options inside .jshintrc file
-    ###
-    jshint:
-      files: ["src/js/*.js", "Gruntfile.js"]
-      options:
-        jshintrc: ".jshintrc"
-
+  
     
     ###
     Concatenate JavaScript files
@@ -225,7 +215,7 @@ module.exports = (grunt) ->
     watch:
       concat:
         files: "<%= project.src %>/js/{,*/}*.js"
-        tasks: ["concat:dev", "jshint"]
+        tasks: ["concat:dev"]
 
       sass:
         files: "<%= project.src %>/scss/{,*/}*.{scss,sass}"
@@ -249,11 +239,11 @@ module.exports = (grunt) ->
   Default task
   Run `grunt` on the command line
   ###
-  grunt.registerTask "default", ["sass:dev", "coffee:dist", "jade:html", "cssmin:dev", "bower:dev", "autoprefixer:dev", "jshint", "concat:dev", "connect:livereload", "open", "watch"]
+  grunt.registerTask "default", ["sass:dev", "coffee:dist", "jade:html", "cssmin:dev", "bower:dev", "autoprefixer:dev", "concat:dev", "connect:livereload", "open", "watch"]
   
   ###
   Build task
   Run `grunt build` on the command line
   Then compress all JS/CSS files
   ###
-  grunt.registerTask "build", ["sass:dist", "coffee:dist", "jade:html", "bower:dist", "autoprefixer:dist", "cssmin:dist", "clean:dist", "jshint", "uglify"]
+  grunt.registerTask "build", ["sass:dist", "coffee:dist", "jade:html", "bower:dist", "autoprefixer:dist", "cssmin:dist", "clean:dist", "uglify"]

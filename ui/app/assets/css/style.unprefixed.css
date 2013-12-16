@@ -1,5 +1,5 @@
 /*!
- * Flambe Home
+ * Flambe_Home
  * Show and tell for people who love to cook
  * http://wwww.flam.be
  * @author Alvaro Muir
